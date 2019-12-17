@@ -122,20 +122,24 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if(is_array($rs_invest)): $i = 0; $__LIST__ = $rs_invest;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val_invest): $mod = ($i % 2 );++$i; $uId=$val_invest["uiUid"]; $users=M("users"); $rs_users=$users->where("uId={$uId}")->find(); ?>
+                            <?php if(is_array($rs_invest)): $rs_key = 0; $__LIST__ = $rs_invest;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val_invest): $mod = ($rs_key % 2 );++$rs_key; $uId=$val_invest["uiUid"]; $users=M("users"); $rs_users=$users->where("uId={$uId}")->find(); $number_uninvest=M("users_uninvest")->where("uuniUid={$uIdjs} AND uuniState=0")->order('uuniId')->find(); ?>
                                 <tr class="gradeX">
-                                    <td><?php echo ($val_invest["uiId"]); ?></td>
+                                    <td><?php echo ($rs_key); ?></td>
+<!--                                    <td><?php echo ($val_invest["uiId"]); ?></td>-->
                                     <td><?php echo ($rs_users["uUser"]); ?></td>
                                     <td><?php echo ($rs_users["xingji"]); ?></td>
                                     <td><?php echo ($rs_users["uTel"]); ?></td>
                                     <td><?php echo ($val_invest["uiUJiner"]); ?></td>
                                     <td style="font-weight:bold">
                                         <!--<a href="/Wap/Assistance/jiaoGe/uiUid/<?php echo ($val_invest["uiUid"]); ?>/uiId/<?php echo ($val_invest["uiId"]); ?>/uIdjs/<?php echo ($uIdjs); ?>">交割</a>-->
-                                        <a href="/Wap/Assistance/jiaoGe/uiUid/<?php echo ($val_invest["uiUid"]); ?>/uiId/<?php echo ($val_invest["uiId"]); ?>/uIdjs/<?php echo ($uIdjs); ?>" onclick="return js_method('<?php echo ($rs_users["uUser"]); ?>','<?php echo ($val_invest["uiUJiner"]); ?>')">交割</a>
+                                        <a href="/Wap/Assistance/jiaoGe/uiUid/<?php echo ($val_invest["uiUid"]); ?>/uiId/<?php echo ($val_invest["uiId"]); ?>/uIdjs/<?php echo ($uIdjs); ?>" onclick="return js_method('<?php echo ($rs_users["uUser"]); ?>','<?php echo ($val_invest["uiUJiner"]); ?>','<?php echo ($number_uninvest["uuniJiner"]); ?>')">交割</a>
                                     </td>
                                     <script>
-                                        function js_method(name,money){
-                                            var neirong="你确定要交割吗？\u000d账号："+name+"\u000d额度："+money;
+                                        function js_method(name,money,uninverst){
+                                            if(uninverst == null || uninverst == ""){
+                                                uninverst = 0;
+                                            }
+                                            var neirong="你确定要交割吗？\u000d账号："+name+"\u000d额度："+money+"\u000d交割："+uninverst;
                                             if(confirm(neirong)){
                                                    return true;
                                             }else{

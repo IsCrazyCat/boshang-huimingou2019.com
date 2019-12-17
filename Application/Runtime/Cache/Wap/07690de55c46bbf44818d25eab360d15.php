@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 
 <head>
@@ -10,14 +10,14 @@
     <title>我的提供援助列表</title>
 
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/Public/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/Public/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
 
     <!-- Data Tables -->
-    <link href="__PUBLIC__/Default/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="/Public/Default/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
-    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
-    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="/Public/Default/css/animate.min.css" rel="stylesheet">
+    <link href="/Public/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
 
 </head>
 
@@ -28,11 +28,11 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5><a style="color:#00bb9c; margin-right:5px;"
-                           href="__URL__/wantinvestlists/uId/<{$rs_users.uId}>">提供援助列表</a>&nbsp;&nbsp;<a
+                           href="/Wap/Assistance/wantinvestlists/uId/<?php echo ($rs_users["uId"]); ?>">提供援助列表</a>&nbsp;&nbsp;<a
                             style="color:#00bb9c; margin-right:5px;"
-                            href="__URL__/wantuninvestlists/uId/<{$rs_users.uId}>">接受援助列表</a>
+                            href="/Wap/Assistance/wantuninvestlists/uId/<?php echo ($rs_users["uId"]); ?>">接受援助列表</a>
                         <small>
-                            <a style="color:#ff0000;" href="http://huimingou.com/Assistance/wantinvest/uId/<{$rs_users.uId}>">我要援助</a>
+                            <a style="color:#ff0000;" href="http://huimingou.com/Assistance/wantinvest/uId/<?php echo ($rs_users["uId"]); ?>">我要援助</a>
                         </small>
                     </h5>
                     <div class="ibox-tools">
@@ -55,58 +55,34 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <volist name="rs_invest" id="val_invest">
-                            <php>
-                                $enddate=strtotime($val_invest["uiTouziEndDate"]);
-                                $daenddateutuj=date("Y/m/d H:i:s",$enddate);
-                            </php>
+                        <?php if(is_array($rs_invest)): $i = 0; $__LIST__ = $rs_invest;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val_invest): $mod = ($i % 2 );++$i; $enddate=strtotime($val_invest["uiTouziEndDate"]); $daenddateutuj=date("Y/m/d H:i:s",$enddate); ?>
                             <tr class="gradeX">
                                 <!--
-                                    <td><{$val_invest.uiId}></td>
+                                    <td><?php echo ($val_invest["uiId"]); ?></td>
                                 -->
-                                <td class="dropdown hidden-xs"><{$rs_users.uUser}></td>
-                                <td class="dropdown hidden-xs"><a href="__URL__/showpayimg/uiId/<{$val_invest.uiId}>"><{$rs_users.uZhifubao}></a>
+                                <td class="dropdown hidden-xs"><?php echo ($rs_users["uUser"]); ?></td>
+                                <td class="dropdown hidden-xs"><a href="/Wap/Assistance/showpayimg/uiId/<?php echo ($val_invest["uiId"]); ?>"><?php echo ($rs_users["uZhifubao"]); ?></a>
                                 </td>
-                                <td><{$val_invest.uiUJiner}></td>
-                                <td><{$val_invest.uiDate}></td>
-                                <if condition="$val_invest.uiState eq 0">
-                                    <td><a class="btn btn-default btn-rounded btn-xs">等待排单</a></td>
-                                    <elseif condition="$val_invest.uiState eq 1 AND $val_invest.uiZhifu eq 0"/>
+                                <td><?php echo ($val_invest["uiUJiner"]); ?></td>
+                                <td><?php echo ($val_invest["uiDate"]); ?></td>
+                                <?php if($val_invest["uiState"] == 0): ?><td><a class="btn btn-default btn-rounded btn-xs">等待排单</a></td>
+                                    <?php elseif($val_invest["uiState"] == 1 AND $val_invest["uiZhifu"] == 0): ?>
 
-                                    <php>
-                                        $users_parameters=M("users_parameters");
+                                    <?php $users_parameters=M("users_parameters"); $fukuanqx=$users_parameters->where("upId=1")->field("upPaymentPeriod")->find(); $start=strtotime(($val_invest["uiStateDate"])); $stepend=$fukuanqx["upPaymentPeriod"]*3600; $nowtime=strtotime(date("Y-m-d H:i:s")); $shengyu=round(((($start+$stepend)-$nowtime)/3600),1); if($shengyu<1){ $fenzhong=floor((($start+$stepend)-$nowtime)/60); } ?>
 
-                                        $fukuanqx=$users_parameters->where("upId=1")->field("upPaymentPeriod")->find();
-                                        $start=strtotime(($val_invest["uiStateDate"]));
-                                        $stepend=$fukuanqx["upPaymentPeriod"]*3600;
-                                        $nowtime=strtotime(date("Y-m-d H:i:s"));
-                                        $shengyu=round(((($start+$stepend)-$nowtime)/3600),1);
-                                        if($shengyu<1){
-                                        $fenzhong=floor((($start+$stepend)-$nowtime)/60);
-                                        }
-                                    </php>
-
-                                    <if condition="$fenzhong lt 0 AND $shengyu lt 1">
-                                        <td><a class="btn btn-danger btn-rounded btn-outline btn-xs">打款期限已过</a></td>
-                                        <else/>
+                                    <?php if($fenzhong < 0 AND $shengyu < 1): ?><td><a class="btn btn-danger btn-rounded btn-outline btn-xs">打款期限已过</a></td>
+                                        <?php else: ?>
 
                                         <td><a class="btn btn-danger btn-rounded btn-xs"
-                                               href="__URL__/yespayinvest/uiId/<{$val_invest.uiId}>">待我打款</a><br/>
+                                               href="/Wap/Assistance/yespayinvest/uiId/<?php echo ($val_invest["uiId"]); ?>">待我打款</a><br/>
                                             <span style="color:#06b6b0; font-weight: bold;" id="shi">00时</span>
                                             <span style="color:#06b6b0; font-weight: bold;" id="fen">00分</span>
                                             <span style="color:#06b6b0; font-weight: bold;" id="miao">00秒</span>
                                         </td>
-                                        <php>
-                                            $paUsers=M("users_parameters");
-                                            $paramenters=$paUsers->where("upId=1")->find();//在几小时内完成打款
-                                            $jixiaoshinei = $paramenters['jixiaoshinei'];
-                                            $uuniStateDate=$val_invest["uiStateDate"];
-                                            $daojishi=date("Y/m/d H:i:s",strtotime($uuniStateDate)+$jixiaoshinei*3600);
-
-                                        </php>
+                                        <?php $paUsers=M("users_parameters"); $paramenters=$paUsers->where("upId=1")->find(); $jixiaoshinei = $paramenters['jixiaoshinei']; $uuniStateDate=$val_invest["uiStateDate"]; $daojishi=date("Y/m/d H:i:s",strtotime($uuniStateDate)+$jixiaoshinei*3600); ?>
                                         <script>
                                             function GetRTime1(){
-                                                var EndTime= new Date('<{$daojishi}>');
+                                                var EndTime= new Date('<?php echo ($daojishi); ?>');
                                                 var NowTime = new Date();
                                                 var t =EndTime.getTime() - NowTime.getTime();
                                                 if(t<=0){
@@ -128,29 +104,25 @@
 
                                             }
                                             var dwfk = setInterval(GetRTime1,1000);
-                                        </script>
-                                    </if>
+                                        </script><?php endif; ?>
 
-                                    <elseif condition="$val_invest.uiState eq 1 AND $val_invest.uiZhifu eq 1 AND $val_invest.uiSuccess eq 0"/>
-                                    <php>
-                                        $uId=$val_invest["uiBeijiuyuanUid"];
-
-                                    </php>
+                                    <?php elseif($val_invest["uiState"] == 1 AND $val_invest["uiZhifu"] == 1 AND $val_invest["uiSuccess"] == 0): ?>
+                                    <?php $uId=$val_invest["uiBeijiuyuanUid"]; ?>
                                     <td><a class="btn btn-warning btn-rounded btn-xs"
-                                           href="__URL__/showunuserinfo/unuserId/<{$uId}>">待对方收款</a></td>
+                                           href="/Wap/Assistance/showunuserinfo/unuserId/<?php echo ($uId); ?>">待对方收款</a></td>
 
 
-                                    <elseif condition="$val_invest.uiState eq 1 AND $val_invest.uiZhifu eq 1 AND $val_invest.uiSuccess eq 1 AND $val_invest.uiTouziEnd eq 0"/>
+                                    <?php elseif($val_invest["uiState"] == 1 AND $val_invest["uiZhifu"] == 1 AND $val_invest["uiSuccess"] == 1 AND $val_invest["uiTouziEnd"] == 0): ?>
                                     <td>
                                         <!--<a class="btn btn-info btn-rounded btn-xs" href="#">进行中</a>-->
-                                        <span style="color:#06b6b0; font-weight: bold;" id="t_jxzqsd<{$k}>">00天</span>
-                                        <span style="color:#06b6b0; font-weight: bold;" id="t_jxzqsh<{$k}>">00时</span>
-                                        <span style="color:#06b6b0; font-weight: bold;" id="t_jxzqsm<{$k}>">00分</span>
-                                        <span style="color:#06b6b0; font-weight: bold;" id="t_jxzqss<{$k}>">00秒</span>
+                                        <span style="color:#06b6b0; font-weight: bold;" id="t_jxzqsd<?php echo ($k); ?>">00天</span>
+                                        <span style="color:#06b6b0; font-weight: bold;" id="t_jxzqsh<?php echo ($k); ?>">00时</span>
+                                        <span style="color:#06b6b0; font-weight: bold;" id="t_jxzqsm<?php echo ($k); ?>">00分</span>
+                                        <span style="color:#06b6b0; font-weight: bold;" id="t_jxzqss<?php echo ($k); ?>">00秒</span>
                                     </td>
                                     <script>
                                         function GetRTime(){
-                                            var EndTime= new Date('<{$daenddateutuj}>');
+                                            var EndTime= new Date('<?php echo ($daenddateutuj); ?>');
                                             var NowTime = new Date();
                                             var t =EndTime.getTime() - NowTime.getTime();
                                             if(t<=0){
@@ -160,16 +132,16 @@
                                             var h=Math.floor(t/1000/60/60%24);
                                             var m=Math.floor(t/1000/60%60);
                                             var s=Math.floor(t/1000%60);
-                                            if(document.getElementById("t_jxzqsd<{$k}>").innerHTML !== (d + "天")){
-                                                document.getElementById("t_jxzqsd<{$k}>").innerHTML = d + "天";
+                                            if(document.getElementById("t_jxzqsd<?php echo ($k); ?>").innerHTML !== (d + "天")){
+                                                document.getElementById("t_jxzqsd<?php echo ($k); ?>").innerHTML = d + "天";
                                             }
-                                            if(document.getElementById("t_jxzqsh<{$k}>").innerHTML !== (h + "时")){
-                                                document.getElementById("t_jxzqsh<{$k}>").innerHTML = h + "时";
+                                            if(document.getElementById("t_jxzqsh<?php echo ($k); ?>").innerHTML !== (h + "时")){
+                                                document.getElementById("t_jxzqsh<?php echo ($k); ?>").innerHTML = h + "时";
                                             }
-                                            if(document.getElementById("t_jxzqsm<{$k}>").innerHTML !== (h + "分")){
-                                                document.getElementById("t_jxzqsm<{$k}>").innerHTML = h + "分";
+                                            if(document.getElementById("t_jxzqsm<?php echo ($k); ?>").innerHTML !== (h + "分")){
+                                                document.getElementById("t_jxzqsm<?php echo ($k); ?>").innerHTML = h + "分";
                                             }
-                                            document.getElementById("t_jxzqss<{$k}>").innerHTML = s + "秒";
+                                            document.getElementById("t_jxzqss<?php echo ($k); ?>").innerHTML = s + "秒";
                                         }
                                         var djs1 = setInterval(GetRTime,1000);
                                     </script>
@@ -177,12 +149,9 @@
 
 
 
-                                    <elseif condition="$val_invest.uiState eq 1 AND $val_invest.uiZhifu eq 1 AND $val_invest.uiSuccess eq 1 AND $val_invest.uiTouziEnd eq 1 AND $val_invest.uiunShenqing eq 0"/>
-                                    <td><a class="btn btn-primary btn-rounded btn-xs" href="#">已经完成</a></td>
-                                </if>
-                            </tr>
-
-                        </volist>
+                                    <?php elseif($val_invest["uiState"] == 1 AND $val_invest["uiZhifu"] == 1 AND $val_invest["uiSuccess"] == 1 AND $val_invest["uiTouziEnd"] == 1 AND $val_invest["uiunShenqing"] == 0): ?>
+                                    <td><a class="btn btn-primary btn-rounded btn-xs" href="#">已经完成</a></td><?php endif; ?>
+                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
                         </tbody>
 
                     </table>
@@ -192,12 +161,12 @@
         </div>
     </div>
 </div>
-<script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
-<script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="__PUBLIC__/Default/js/plugins/jeditable/jquery.jeditable.js"></script>
-<script src="__PUBLIC__/Default/js/plugins/dataTables/jquery.dataTables.js"></script>
-<script src="__PUBLIC__/Default/js/plugins/dataTables/dataTables.bootstrap.js"></script>
-<script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+<script src="/Public/Default/js/jquery.min.js?v=2.1.4"></script>
+<script src="/Public/Default/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/Public/Default/js/plugins/jeditable/jquery.jeditable.js"></script>
+<script src="/Public/Default/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="/Public/Default/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="/Public/Default/js/content.min.js?v=1.0.0"></script>
 <script>
     $(document).ready(function () {
         $(".dataTables-example").dataTable();

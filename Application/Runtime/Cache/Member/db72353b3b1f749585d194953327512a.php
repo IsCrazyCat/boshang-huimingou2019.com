@@ -60,10 +60,41 @@
 
                                     <?php $users_parameters=M("users_parameters"); $fukuanqx=$users_parameters->where("upId=1")->field("upPaymentPeriod")->find(); $start=strtotime(($val_invest["uiStateDate"])); $stepend=$fukuanqx["upPaymentPeriod"]*3600; $nowtime=strtotime(date("Y-m-d H:i:s")); $shengyu=round(((($start+$stepend)-$nowtime)/3600),1); if($shengyu<1){ $fenzhong=floor((($start+$stepend)-$nowtime)/60); } ?>
 
-                                    <?php if($fenzhong < 0 AND $shengyu < 1): ?><td><a class="btn btn-danger btn-rounded btn-outline btn-xs">打款期限已过</a></td>
-                                    <?php else: ?>
+                                        <?php if($fenzhong < 0 AND $shengyu < 1): ?><td><a class="btn btn-danger btn-rounded btn-outline btn-xs">打款期限已过</a></td>
+                                            <?php else: ?>
 
-                                        <td><a class="btn btn-danger btn-rounded btn-xs" href="/Member/Assistance/yespayinvest/uiId/<?php echo ($val_invest["uiId"]); ?>">待我打款</a></td><?php endif; ?>
+                                            <td><a class="btn btn-danger btn-rounded btn-xs"
+                                                   href="/Member/Assistance/yespayinvest/uiId/<?php echo ($val_invest["uiId"]); ?>">待我打款</a><br/>
+                                                <span style="color:#06b6b0; font-weight: bold;" id="shi">00时</span>
+                                                <span style="color:#06b6b0; font-weight: bold;" id="fen">00分</span>
+                                                <span style="color:#06b6b0; font-weight: bold;" id="miao">00秒</span>
+                                            </td>
+                                            <?php $paUsers=M("users_parameters"); $paramenters=$paUsers->where("upId=1")->find(); $jixiaoshinei = $paramenters['jixiaoshinei']; $uuniStateDate=$val_invest["uiStateDate"]; $daojishi=date("Y/m/d H:i:s",strtotime($uuniStateDate)+$jixiaoshinei*3600); ?>
+                                            <script>
+                                                function GetRTime1(){
+                                                    var EndTime= new Date('<?php echo ($daojishi); ?>');
+                                                    var NowTime = new Date();
+                                                    var t =EndTime.getTime() - NowTime.getTime();
+                                                    if(t<=0){
+                                                        clearInterval(dwfk)
+                                                    }else{
+                                                        var d=Math.floor(t/1000/60/60/24);
+                                                        var h=Math.floor(t/1000/60/60%24);
+                                                        var m=Math.floor(t/1000/60%60);
+                                                        var s=Math.floor(t/1000%60);
+
+                                                        if(document.getElementById("shi").innerHTML !== (h + "时")){
+                                                            document.getElementById("shi").innerHTML = h + "时";
+                                                        }
+                                                        if(document.getElementById("fen").innerHTML !== (m + "分")){
+                                                            document.getElementById("fen").innerHTML = m + "分";
+                                                        }
+                                                        document.getElementById("miao").innerHTML = s + "秒";
+                                                    }
+
+                                                }
+                                                var dwfk = setInterval(GetRTime1,1000);
+                                            </script><?php endif; ?>
 
                                     <?php elseif($val_invest["uiState"] == 1 AND $val_invest["uiZhifu"] == 1 AND $val_invest["uiSuccess"] == 0): ?>
                                     <?php $uId=$val_invest["uiBeijiuyuanUid"]; ?>

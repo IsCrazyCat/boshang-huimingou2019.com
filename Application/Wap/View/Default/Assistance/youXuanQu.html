@@ -44,14 +44,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <volist name="rs_invest" id="val_invest">
+                            <volist name="rs_invest" key="rs_key" id="val_invest">
                                    <php>
                                     $uId=$val_invest["uiUid"];
                                     $users=M("users");
                                     $rs_users=$users->where("uId={$uId}")->find();
                                     </php>
                                 <tr class="gradeX">
-                                    <td><{$val_invest.uiId}></td>
+                                    <td><{$rs_key}></td>
+<!--                                    <td><{$val_invest.uiId}></td>-->
                                     <td><{$rs_users.uUser}></td>
                                     <td><{$rs_users.xingji}></td>
                                     <td><{$rs_users.uTel}></td>

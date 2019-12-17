@@ -91,19 +91,24 @@
 									
                                 </div>
                             </div><?php endif; ?>
-                            <?php if($paramenters["upTypeInvestment"] == 0): ?><div class="form-group">
-                                <label class="col-sm-2 control-label">您享受的日利率</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<?php echo ($lilv); ?> %" disabled>
-                                </div>
-                            </div><?php endif; ?>
+<!--                            <?php if($paramenters["upTypeInvestment"] == 0): ?>-->
+<!--                            <div class="form-group">-->
+<!--                                <label class="col-sm-2 control-label">您享受的日利率</label>-->
+<!--                                <div class="col-sm-10">-->
+<!--                                    <input type="text" class="form-control" value="<?php echo ($lilv); ?> %" disabled>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--<?php endif; ?>-->
                                 <!-- 投资金额类型  upTypeInvestment -->
-                               <?php if($paramenters["upTypeInvestment"] == 0): ?><div class="form-group">
+                               <?php if($paramenters["upTypeInvestment"] != 0): ?><div class="form-group">
                                 <label class="col-sm-2 control-label">提供援助金额（元）</label>
                                     <div class="col-sm-10 wan-spinner-1">
-                                   
-                                        
-    <input style="width: 100%;height: 32px; margin-left:0px; margin-right:10px; text-align: left; border:1px solid #469987; padding-left:14px;" type="number" name="uiUJiner" step="<?php echo ($paramenters["upTZMultiples"]); ?>" max="<?php echo ($max); ?>" min="<?php echo ($min); ?>" placeholder="<?php echo ($tishijiange); ?>" id="uiUJiner" >
+                                        <select data-placeholder="请选择援助金额" name="uiUJiner" id="uiUJiner" class="chosen-select form-control" required>
+                                            <option value="">请选择提供援助金额</option>
+                                            <?php if(is_array($touzidata)): $i = 0; $__LIST__ = $touzidata;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$valtouzidata): $mod = ($i % 2 );++$i;?><option value="<?php echo ($valtouzidata["utBenJin"]); ?>" hassubinfo="true"><?php echo ($valtouzidata["utBenJin"]); ?> 元</option><?php endforeach; endif; else: echo "" ;endif; ?>
+                                        </select>
+
+<!--    <input style="width: 100%;height: 32px; margin-left:0px; margin-right:10px; text-align: left; border:1px solid #469987; padding-left:14px;" type="number" name="uiUJiner" step="<?php echo ($paramenters["upTZMultiples"]); ?>" max="<?php echo ($max); ?>" min="<?php echo ($min); ?>" placeholder="<?php echo ($tishijiange); ?>" id="uiUJiner" >-->
                                     </div>
                             	</div>
                                 <?php else: ?>

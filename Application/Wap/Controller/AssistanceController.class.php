@@ -489,8 +489,9 @@ if(empty($rs_invest)){
 		
         $this->assign("lilv",$lilv);
         $users_invest=M("users_invest");
-        if($paramenters["upTypeInvestment"]==1){
-            $utBenJin = $users_invest->where("uiState=1 AND uiZhifu=1 AND uiSuccess=1 AND uiTouziEnd = 0 AND uiUid={$uId}")->max('uiUJiner');
+//        if($paramenters["upTypeInvestment"]==1){
+            //            $utBenJin = $users_invest->where("uiState=1 AND uiZhifu=1 AND uiSuccess=1 AND uiTouziEnd = 0 AND uiUid={$uId}")->max('uiUJiner');
+            $utBenJin = $users_invest->where("uiState=1 AND uiZhifu=1 AND uiUid={$uId}")->max('uiUJiner');
             $users_touzidata=M("users_touzidata");
 
             if(!empty($utBenJin)){
@@ -499,7 +500,7 @@ if(empty($rs_invest)){
                 $touzidata=$users_touzidata->select();
             }
             $this->assign("touzidata",$touzidata);
-        }
+//        }
         $count_pipei=$users_invest->where("uiState=0 AND uiUid={$uId}")->count();
         $this->assign("conut_pipei",$count_pipei);
         $count_success=$users_invest->where("uiState=1 AND uiSuccess=0  AND uiUid={$uId}")->count();
@@ -775,8 +776,9 @@ if(empty($rs_invest)){
                 $data["uiZhifu"]=1;
                 $data['uiId'] = $uiId;
                 $users_invest=M("users_invest");
-                $rs_invest=$users_invest->where("uiId={$uiId}")->field("uiStateDate,uiUid")->find();
+                $rs_invest = $users_invest->where("uiId={$uiId}")->find();
                 $usersId=$rs_invest["uiUid"];
+                $uiUJiner=$rs_invest["uiUJiner"];//救援金额
                 $uuniStateDate=$rs_invest["uiStateDate"];
                 $users_uninvest=M("users_uninvest");
                 $paUsers=M("users_parameters");
@@ -807,11 +809,13 @@ if(empty($rs_invest)){
                     if( ( $timeCha > (int)$aaa * 3600 ) && ( $timeCha <= (int)$bbb * 3600 ) ){//如果打款时间大于两个小时
                         $lixiLv = $paramenters['waijingshou'];//在几小时(外)完成打款静态收益
                         $jifenLv = $paramenters['waidakuanjifen'];//在几小时(外)完成打款商城积分收益
+                        $shopjifenlogo['mlInfo']='期限外提供援助发放商城积分';
                     }
 					if( $timeCha <= (int)$aaa*3600 )
 					{
                         $lixiLv = $paramenters['jingshou'];//在几小时(内)完成打款静态收益
                         $jifenLv = $paramenters['dakuanjifen'];//在几小时(内)完成打款商城积分收益
+                        $shopjifenlogo['mlInfo']='期限内提供援助发放商城积分';
                     }
 //算排队利息
                     //1为固定利息
@@ -892,7 +896,7 @@ if(empty($rs_invest)){
                     $shopjifenlogo['mlJiner'] = $touzijiner * $jifenLv / 100;//财务日志对应的金钱
                     $shopjifenlogo['mlMoneyType'] = 5;//  金额类型  5   商城积分
 
-                    $shopjifenlogo['mlinfo']='发放商城积分';
+                    $shopjifenlogo['mlInfo']='期限内提供援助发放商城积分';
 
                     $nowdatetimes = date("Y-m-d H:i:s",time());
                     $today = date("Y-m-d",time());

@@ -95,22 +95,27 @@
                                 </div>
                             </div>
 							</if>
-                            <if condition="$paramenters.upTypeInvestment eq 0">
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">您享受的日利率</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<{$lilv}> %" disabled>
-                                </div>
-                            </div>
-                            </if>
+<!--                            <if condition="$paramenters.upTypeInvestment eq 0">-->
+<!--                            <div class="form-group">-->
+<!--                                <label class="col-sm-2 control-label">您享受的日利率</label>-->
+<!--                                <div class="col-sm-10">-->
+<!--                                    <input type="text" class="form-control" value="<{$lilv}> %" disabled>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            </if>-->
                                 <!-- 投资金额类型  upTypeInvestment -->
-                               <if condition="$paramenters.upTypeInvestment eq 0">
+                               <if condition="$paramenters.upTypeInvestment neq 0">
                                 <div class="form-group">
                                 <label class="col-sm-2 control-label">提供援助金额（元）</label>
                                     <div class="col-sm-10 wan-spinner-1">
-                                   
-                                        
-    <input style="width: 100%;height: 32px; margin-left:0px; margin-right:10px; text-align: left; border:1px solid #469987; padding-left:14px;" type="number" name="uiUJiner" step="<{$paramenters.upTZMultiples}>" max="<{$max}>" min="<{$min}>" placeholder="<{$tishijiange}>" id="uiUJiner" >
+                                        <select data-placeholder="请选择援助金额" name="uiUJiner" id="uiUJiner" class="chosen-select form-control" required>
+                                            <option value="">请选择提供援助金额</option>
+                                            <volist name="touzidata" id="valtouzidata" >
+                                                <option value="<{$valtouzidata.utBenJin}>" hassubinfo="true"><{$valtouzidata.utBenJin}> 元</option>
+                                            </volist>
+                                        </select>
+
+<!--    <input style="width: 100%;height: 32px; margin-left:0px; margin-right:10px; text-align: left; border:1px solid #469987; padding-left:14px;" type="number" name="uiUJiner" step="<{$paramenters.upTZMultiples}>" max="<{$max}>" min="<{$min}>" placeholder="<{$tishijiange}>" id="uiUJiner" >-->
                                     </div>
                             	</div>
                                 <else />

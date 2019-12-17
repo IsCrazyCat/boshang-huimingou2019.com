@@ -43,25 +43,30 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <volist name="rs_invest" id="val_invest">
+                            <volist name="rs_invest" key="rs_key" id="val_invest">
                                 <php>
                                     $uId=$val_invest["uiUid"];
                                     $users=M("users");
                                     $rs_users=$users->where("uId={$uId}")->find();
+                                    $number_uninvest=M("users_uninvest")->where("uuniUid={$uIdjs} AND uuniState=0")->order('uuniId')->find();
                                 </php>
                                 <tr class="gradeX">
-                                    <td><{$val_invest.uiId}></td>
+                                    <td><{$rs_key}></td>
+<!--                                    <td><{$val_invest.uiId}></td>-->
                                     <td><{$rs_users.uUser}></td>
                                     <td><{$rs_users.xingji}></td>
                                     <td><{$rs_users.uTel}></td>
                                     <td><{$val_invest.uiUJiner}></td>
                                     <td style="font-weight:bold">
                                         <!--<a href="__URL__/jiaoGe/uiUid/<{$val_invest.uiUid}>/uiId/<{$val_invest.uiId}>/uIdjs/<{$uIdjs}>">交割</a>-->
-                                        <a href="__URL__/jiaoGe/uiUid/<{$val_invest.uiUid}>/uiId/<{$val_invest.uiId}>/uIdjs/<{$uIdjs}>" onclick="return js_method('<{$rs_users.uUser}>','<{$val_invest.uiUJiner}>')">交割</a>
+                                        <a href="__URL__/jiaoGe/uiUid/<{$val_invest.uiUid}>/uiId/<{$val_invest.uiId}>/uIdjs/<{$uIdjs}>" onclick="return js_method('<{$rs_users.uUser}>','<{$val_invest.uiUJiner}>','<{$number_uninvest.uuniJiner}>')">交割</a>
                                     </td>
                                     <script>
-                                        function js_method(name,money){
-                                            var neirong="你确定要交割吗？\u000d账号："+name+"\u000d额度："+money;
+                                        function js_method(name,money,uninverst){
+                                            if(uninverst == null || uninverst == ""){
+                                                uninverst = 0;
+                                            }
+                                            var neirong="你确定要交割吗？\u000d账号："+name+"\u000d额度："+money+"\u000d交割："+uninverst;
                                             if(confirm(neirong)){
                                                    return true;
                                             }else{
