@@ -1,0 +1,123 @@
+</div>
+</div>
+<include file="Public/left"/>
+
+<if condition=" $signPackage">
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+  wx.config({
+      debug: false,
+      appId: '{$signPackage.appId}',
+      timestamp: {$signPackage.timestamp},
+      nonceStr: '{$signPackage.nonceStr}',
+      signature: '{$signPackage.signature}',
+      jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'translateVoice',
+        'startRecord',
+        'stopRecord',
+        'onRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'closeWindow',
+        'scanQRCode',
+        'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard'
+      ]
+  });
+  var shareData = {
+		//title: '{$page_title}', // 分享标题
+		link: '{$wx_url}', // 分享链接
+	   	// imgUrl: '', // 分享图标
+	   	
+		success: function () { 
+			// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+			// 用户取消分享后执行的回调函数
+		}
+	}
+   wx.ready(function () {
+    // 在这里调用 API
+		wx.onMenuShareTimeline(shareData);
+		wx.onMenuShareAppMessage(shareData);
+		wx.onMenuShareQQ({
+		  title: '{$page_title}',
+		  desc: '',
+		  link: '{$wx_url}',
+		  imgUrl: '',
+		  trigger: function (res) {
+			//$.alert('用户点击分享到QQ');
+		  },
+		  complete: function (res) {
+			//$.alert(JSON.stringify(res));
+		  },
+		  success: function (res) {
+			//$.alert('已分享');
+		  },
+		  cancel: function (res) {
+			//$.alert('已取消');
+		  },
+		  fail: function (res) {
+			//$.alert(JSON.stringify(res));
+		  }
+		});
+		wx.onMenuShareWeibo(shareData);
+  });
+</script>
+</if>
+
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/suimobile/sm.min.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/suimobile/sm-extend.min.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/script.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/licai.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/deals.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/transfer.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/article.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/licai_uc_published_lc.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_learn.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_goods_order.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_voucher.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/integral_mall.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_address.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_carry_money_log.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_account_log.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/licai_uc_buyed_lc.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/licai_uc_redeem_lc.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/licai_uc_record_lc.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/licai_uc_expire_lc.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_borrowed.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/vip_buy.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_interestrate.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_bank.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_collect.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_transfer.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_invest.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/uc_incharge.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/public.js' ></script>
+<script type='text/javascript' charset='utf-8' src='__PUBLIC__/Default/wap/js/Plugin_unit/jscharts_cr.js' ></script>
+
+

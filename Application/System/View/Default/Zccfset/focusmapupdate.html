@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加轮播图</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>修改轮播图<small><a style="margin-left:20px;" href="__URL__/focusmap">轮播图管理</a></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/FocusmapUpdateAction/zfId/<{$rs_focusmap.zfId}>" class="form-horizontal" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">序号</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="zfNum" id="zfNum" placeholder="序号需要从0开始" value="<{$rs_focusmap.zfNum}>" required >
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">焦点图标题</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="zfTitle" id="zfTitle" placeholder="控制在100个字节以内,可以不填写" value="<{$rs_focusmap.zfTitle}>">
+                                </div>
+                            </div>
+                            
+                                
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">焦点图链接地址</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="zfUrl" placeholder="请输入网址或本站链接" value="<{$rs_focusmap.zfUrl}>" class="form-control" >
+                                    </div>
+                            	</div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">焦点图背景颜色</label>
+                                    <div class="col-sm-1" style="width: 80px;">
+                                        <input type="color" name="zfColor" id="zfColor" placeholder="焦点图背景颜色" value="<{$rs_focusmap.zfColor}>" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">原焦点图图片</label>
+                                    <div class="col-sm-10">
+                                        <img src="__ROOT__/<{$rs_focusmap.zfImages}>" width="500" height="231">
+                                    </div>
+                                </div>
+                           
+                           
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">上传新焦点图（1080*500 像素）</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="zfImages" placeholder="1080*500" value="<{$rs_focusmap.zfImages}>" class="form-control" >
+                                    </div>
+                                </div>
+                            
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <input class="btn btn-primary" type="submit" value="添加">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>财务统计</title>
+    
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+<script src="__PUBLIC__/Default/js/echarts.js"></script>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>柱状图</h5>
+                        <div class="ibox-tools">
+                        </div>
+                    </div>
+                    <div class="ibox-content" style="height: 700px;">
+                        <div class="flot-chart">
+    <div id="main" style="width: 92%;height:600px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+    title : {
+        text: '',
+        subtext: ''
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['奖金','利息']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : ['金额']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'利息',
+            type:'bar',
+            data:[<{$all_lixi}>],
+            markPoint : {
+                
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        },
+        {
+            name:'奖金',
+            type:'bar',
+            data:[<{$all_jiangjin}>],
+            markPoint : {
+                
+            },
+            markLine : {
+                
+            }
+        }
+    ]
+};
+        myChart.setOption(option);
+    </script>
+                            <div class="flot-chart-content" id="flot-pie-chart">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>饼状图</h5>
+                        <div class="ibox-tools">
+                        </div>
+                    </div>
+                    <div class="ibox-content" style="height: 700px;">
+                        <div class="flot-chart">
+    <div id="main1" style="width: 92%;height:600px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main1'));
+
+        // 指定图表的配置项和数据
+        var option = {
+                        series : [
+                            {
+                                name: '财务统计',
+                                type: 'pie',
+                                radius: '55%',
+                                data:[
+                                    {value:<{$all_lixi}>, name:'利息'},
+                                    {value:<{$all_jiangjin}>, name:'奖金'}
+                                ]
+                            }
+                        ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+                            <div class="flot-chart-content" id="flot-pie-chart">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/plugins/flot/jquery.flot.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/demo/flot-demo.min.js"></script>
+    
+</body>
+
+</html>

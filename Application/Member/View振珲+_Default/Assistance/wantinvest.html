@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我想要援助</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/dist/wan-spinner.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5><a style="color:#00bb9c; margin-right:5px;" href="__URL__/wantinvest/uId/<{$rs_users.uId}>">我想要提供援助</a> <small><a style="color:#ff0000" href="__URL__/wantinvestlists/uId/<{$rs_users.uId}>">援助列表</a></small></h5>
+                        <div class="ibox-tools">
+                        
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/WantInvestAction" class="form-horizontal" id="form-admin-add" >
+                         <div class="form-group">
+                                <label class="col-sm-2 control-label">撞单</label>
+                                <div class="col-sm-10">
+                                       <label class="checkbox-inline">
+                                            <input type="radio" value="1" name="zhuangDan" checked>&nbsp;同意撞单</label>
+                                        <label class="checkbox-inline">
+                                            <input type="radio" value="2" name="zhuangDan">&nbsp;拒绝撞单</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">我的账户</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$rs_users.uUser}>" disabled>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">我的手机号</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$rs_users.uTel}>" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">我的支付宝账户</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$rs_users.uZhifubao}>" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">我的微信号</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$rs_users.uWeixin}>" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">我的姓名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$rs_users.uName}>" disabled>
+                                </div>
+                            </div>
+                            
+                            <if condition="$paramenters.upPDLXONorOFF eq 1">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">排单天数</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$paramenters.upPDLXDay}> 天，排单期间也享有利息" disabled>
+                                </div>
+                            </div>
+                            </if>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">援助天数</label>
+                                <div class="col-sm-10">
+                                    <input type="hidden" class="form-control" name="uiUid" value="<{$rs_users.uId}>">
+                                    <input type="text" class="form-control" value="<{$paramenters.upTermOfInvestment}> 天" disabled>
+                                </div>
+                            </div>
+							<if condition="$rs_reggrades.rgName neq null">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">当前等级</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$rs_reggrades.rgName}> " disabled>
+									
+                                </div>
+                            </div>
+							</if>
+                            <if condition="$paramenters.upTypeInvestment eq 0">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">您享受的日利率</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$lilv}> %" disabled>
+                                </div>
+                            </div>
+                            </if>
+                                <!-- 投资金额类型  upTypeInvestment -->
+                               <if condition="$paramenters.upTypeInvestment eq 0">
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">提供援助金额（元）</label>
+                                    <div class="col-sm-10 wan-spinner-1">
+                                   
+                                        
+    <input style="width: 100%;height: 32px; margin-left:0px; margin-right:10px; text-align: left; border:1px solid #469987; padding-left:14px;" type="number" name="uiUJiner" step="<{$paramenters.upTZMultiples}>" max="<{$max}>" min="<{$min}>" placeholder="<{$tishijiange}>" id="uiUJiner" >
+                                    </div>
+                            	</div>
+                                <else />
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">请选择提供援助金额</label>
+                                <div class="col-sm-10">
+                                <select data-placeholder="请选择援助金额" name="uiUJiner" id="uiUJiner" class="chosen-select form-control" required>
+                                    <option value="">请选择提供援助金额</option>
+                                    <volist name="touzidata" id="valtouzidata" >
+                                    <option value="<{$valtouzidata.utBenJin}>" hassubinfo="true"><{$valtouzidata.utBenJin}> 元</option>
+                                    </volist>
+
+                                </select>
+                                </div>
+                                </div>
+
+                                </if>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">请输入安全密码</label>
+                                    <div class="col-sm-10">
+                                        <input  type="password" name="uZfPwd" id="uZfPwd" placeholder="请输入安全密码" class="form-control">
+                                    </div>
+                                 </div>
+
+                                 <div class="hr-line-dashed"></div>
+                            <div class="form-group" style="margin-top:-30px;">
+                                <label class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-10">
+                                        <span style="color:#ff0000; font-weight:bold">温馨提示：投资有风险,理财需谨慎<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*每排<{$paramenters.paiduoshaoyuan}>元,消耗<{$paramenters.xiaohaopaidanbi}>个手续费</span>
+                                    </div>
+                                 </div>
+                                
+                            <div class="hr-line-dashed" style="margin-top:-10px;"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                        <button class="btn btn-primary" type="submit">提交排单</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/jquery.validate.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/messages_zh.min.js"></script> 
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/validate-methods.js"></script> 
+
+
+
+   
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    
+    <script type="text/javascript">
+	$(function(){
+	$("#form-admin-add").validate({
+		rules:{
+			uiUJiner:{
+				required:true,
+			},
+           uZfPwd:{
+                required:true,
+                minlength:6,
+                maxlength:6
+
+            },
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+  
+  <script src="__PUBLIC__/Default/dist/wan-spinner.js"></script> 
+  <script>
+  $(document).ready(function() {
+    var options = {
+      maxValue: <{$paramenters.upMaxMoney}>,
+      minValue: <{$paramenters.upTZMultiples}>,
+      step: <{$paramenters.upTZMultiples}>,
+      inputWidth: 150,
+      start: 0,
+      plusClick: function(val) {
+        console.log(val);
+      },
+      minusClick: function(val) {
+        console.log(val);
+      },
+      exceptionFun: function(val) {
+        console.log("excep: " + val);
+      },
+      valueChanged: function(val) {
+        console.log('change: ' + val);
+      }
+    }
+    $(".wan-spinner-1").WanSpinner(options);
+
+  });
+  </script>   
+    
+</body>
+
+</html>

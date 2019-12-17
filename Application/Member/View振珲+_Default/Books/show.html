@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言详细内容</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>留言详细内容 <small><a href="__URL__/lists/st/1">留言记录</a></small></h5>
+                        <div class="ibox-tools">
+                            
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/ReplyAction/bId/<{$rs_books.bId}>" class="form-horizontal" id="form-admin-add" >
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">账户</label>
+                                <div class="col-sm-10" style="margin-top: 7px;">
+                                    <{$rs_books.bUser}>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">手机号</label>
+                                <div class="col-sm-10" style="margin-top: 7px;">
+                                    <{$rs_books.bTel}>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">留言时间</label>
+                                <div class="col-sm-10" style="margin-top: 7px;">
+                                   <{$rs_books.bDate}>
+                                </div>
+                            </div>
+                            <if condition="$rs_books.bRdate neq null">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">最近一次回复时间</label>
+                                <div class="col-sm-10" style="margin-top: 7px;">
+                                    <{$rs_books.bRdate}>
+                                </div>
+                            </div>
+                            </if>
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">留言标题</label>
+                                    <div class="col-sm-10" style="margin-top: 7px;">
+                                        <{$rs_books.bTitle}>
+                                    </div>
+                            	</div>
+                            
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">留言内容</label>
+                                    <div class="col-sm-10" style="margin-top: 7px;">
+                                    <{$rs_books.bContent}>
+                                    </div>
+                            	</div>
+                           
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">管理员回复内容</label>
+                                    <div class="col-sm-10" style="margin-top: 7px;">
+                                    <if condition="$rs_books.bRcontent eq null">
+                                    <span style="color:#0000ff">管理员还未回复</span>
+                                    <else/>
+                                    <{$rs_books.bRcontent}>
+                                    </if>
+                                    </div>
+                                </div>
+                                
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/jquery.validate.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/messages_zh.min.js"></script> 
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/validate-methods.js"></script> 
+
+
+
+   
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    
+    <script type="text/javascript">
+	$(function(){
+	$("#form-admin-add").validate({
+		rules:{
+			bTitle:{
+				required:true,
+			},
+			bContent:{
+				required:true,
+				minlength:5,
+			},
+			bRcontent:{
+				required:true,
+                minlength:5,
+                maxlength:1000
+			}
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+    
+    
+</body>
+
+</html>

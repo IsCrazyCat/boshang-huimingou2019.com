@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查看会员申请手续费</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>查看申请手续费信息 <small><a href="__URL__/reviewcode/at/0">返回列表</a></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                    <form method="post" class="form-horizontal" id="form-admin-add" >
+                                
+                                <php>
+                                        $uId=$rs_apply["uarUid"];
+                                        $user=M("users");
+                                        $rs_user=$user->where("uId={$uId}")->field("uUser,uTel,uName")->find();
+                                </php>
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">申请人账户</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="<{$rs_user.uUser}>" disabled>
+                                    </div>
+                            	 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">申请人姓名</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="<{$rs_user.uName}>" disabled>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">申请人电话</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="<{$rs_user.uTel}>" disabled>
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">申请时间</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarDate}>" disabled >
+                                    </div>
+                                 </div>
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">当前手续费售价</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarPrice}>" disabled >
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">支付的金额</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarPayPrice}>" disabled >
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">优惠的金额</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarHuiPrice}>" disabled >
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">找回的金额</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarReturnPrice}>" disabled >
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">付款账号</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarZhifuUser}>" disabled >
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">付款账户类型</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarZhifuUserType}>" disabled >
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">收款账户</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarShouKuanUser}>" disabled >
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">收款账户类型</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarShouKuanUserType}>" disabled >
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">虚假提交记录次数</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarErrorNum}>" disabled >
+                                    </div>
+                                 </div>
+
+                                <div class="form-group dropdown hidden-xs">
+                                <label class="col-sm-2 control-label">支付截图</label>
+                                    <div class="col-sm-10">
+                                    <if condition="$rs_apply.uarFiles eq null">
+                                        <img src="__PUBLIC__/Default/img/defaultzhifu.jpg">
+                                    <else/>
+                                        <img src="__ROOT__/<{$rs_apply.uarFiles}>">
+                                    </if>
+                                    </div>
+                                 </div>
+
+                                <div class="form-group dropdown hidden-xs">
+                                <label class="col-sm-2 control-label">状态</label>
+                                    <div class="col-sm-10" style="margin-top: 5px;">
+                                    <if condition="$rs_apply.uarState eq 0">
+                                        <td><button type="button" class="btn btn-success btn-xs">还未审核</button></td>
+                                    <elseif condition="$rs_apply.uarState eq 1"/>
+                                        <td><button type="button" class="btn btn-primary btn-xs">已经发放</button></td>
+
+                                    <elseif condition="$rs_apply.uarState eq 2"/>
+                                        <td><button type="button" class="btn btn-danger btn-outline btn-xs">虚假提交</button></td>
+
+                                    <elseif condition="$rs_apply.uarState eq 3"/>
+                                        <td><button type="button" class="btn btn-warning btn-xs">冻结账户</button></td>
+
+                                    <elseif condition="$rs_apply.uarState eq 4"/>
+                                        <td><button type="button" class="btn btn-danger btn-xs">已被封号</button></td>
+                                    </if>
+                                    </div>
+                                 </div> 
+                            
+                                
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <a class="btn btn-primary" href="__URL__/reviewcode" >返回列表</a>
+                                   
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/jquery.validate.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/messages_zh.min.js"></script> 
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/validate-methods.js"></script> 
+
+
+
+   
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    
+    <script type="text/javascript">
+	$(function(){
+	$("#form-admin-add").validate({
+		rules:{
+			rgName:{
+				required:true,
+			},
+			rgPeople:{
+				required:true,
+
+			},
+            rgSJNextPeople:{
+                required:true,
+
+            },
+			rgLixi:{
+				required:true,
+
+			},
+            rgTJJangjin:{
+                required:true,
+
+            },
+            rgShengjiJiangjin:{
+                required:true,
+
+            },
+            rgShuifei:{
+                required:true,
+
+            },
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+    
+    
+</body>
+
+</html>

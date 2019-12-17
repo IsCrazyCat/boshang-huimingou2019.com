@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站配置</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>网站配置 <small></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/SetAction" class="form-horizontal" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">网站名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="zsWebName" id="zsWebName" placeholder="控制在25个字、50个字节以内" value="<{$rs_zccf_system.zsWebName}>" required >
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">网站标题</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="zsWebTitle" id="zsWebTitle" placeholder="控制在250个字节以内,可以不填写" value="<{$rs_zccf_system.zsWebTitle}>">
+                                </div>
+                            </div>
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">网站关键词</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="zsWebKeyWords" id="zsWebKeyWords" placeholder="请输入网站关键词，不超过100个字符，用,隔开，可以不填写，用于SEO优化" value="<{$rs_zccf_system.zsWebKeyWords}>" class="form-control">
+                                    </div>
+                            	</div>
+                            
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">网站简介</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="zsWebDescription" placeholder="请输入网站介绍，可以不填写，用于SEO优化" value="<{$rs_zccf_system.zsWebDescription}>" class="form-control" >
+                                    </div>
+                            	</div>
+                           
+                           
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">客服电话</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="zsTel" placeholder="请输入手机号码" value="<{$rs_zccf_system.zsTel}>" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">客服微信</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="zsWeixin" placeholder="请输入微信号或公众号" value="<{$rs_zccf_system.zsWeixin}>" class="form-control" required>
+                                    </div>
+                                </div>
+                                
+                              
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">客服QQ号</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="zsQQ" placeholder="请输入QQ号" value="<{$rs_zccf_system.zsQQ}>" class="form-control" required>
+                                    </div>
+                            	</div>
+                                
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">客服邮箱</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="zsEmail" placeholder="请输入电子邮箱" value="<{$rs_zccf_system.zsEmail}>" class="form-control" required>
+                                    </div>
+                            	</div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">注册开关</label>
+
+                                <div class="col-sm-10">
+                                <if condition="$rs_zccf_system.zsWebRegOnOff eq 1">
+                                    <label class="checkbox-inline">
+                                    
+                                        <input type="radio" value="1" name="zsWebRegOnOff" checked> 开启</label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" value="0" name="zsWebRegOnOff"> 关闭</label>
+                                        <else/>
+                                        <label class="checkbox-inline">
+                                    
+                                        <input type="radio" value="1" name="zsWebRegOnOff" > 开启</label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" value="0" name="zsWebRegOnOff" checked> 关闭</label>
+                                        
+                                        </if>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">登陆开关</label>
+
+                                <div class="col-sm-10">
+                                <if condition="$rs_zccf_system.zsWebLoginOnOff eq 1">
+                                    <label class="checkbox-inline">
+                                    
+                                        <input type="radio" value="1" name="zsWebLoginOnOff" checked> 开启</label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" value="0" name="zsWebLoginOnOff"> 关闭</label>
+                                        <else/>
+                                        <label class="checkbox-inline">
+                                    
+                                        <input type="radio" value="1" name="zsWebLoginOnOff" > 开启</label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" value="0" name="zsWebLoginOnOff" checked> 关闭</label>
+                                        
+                                        </if>
+                                    
+                                </div>
+                            </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">站点开关</label>
+
+                                <div class="col-sm-10">
+                                <if condition="$rs_zccf_system.zsWebOnOff eq 1">
+                                    <label class="checkbox-inline">
+                                    
+                                        <input type="radio" value="1" name="zsWebOnOff" checked> 开启</label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" value="0" name="zsWebOnOff"> 关闭</label>
+                                        <else/>
+                                        <label class="checkbox-inline">
+                                    
+                                        <input type="radio" value="1" name="zsWebOnOff" > 开启</label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" value="0" name="zsWebOnOff" checked> 关闭</label>
+                                        
+                                        </if>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">关闭网站说明文字</label>
+                                    <div class="col-sm-10">
+                                    <span style="color: #ff0000"><textarea class="input-text form-control" id="zsWebOnOffInfo" name="zsWebOnOffInfo" rows="4"><{$rs_zccf_system.zsWebOnOffInfo}></textarea></span>
+                                    </div>
+                                </div>
+                            
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <input class="btn btn-primary" type="submit" value="更新">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+</body>
+
+</html>

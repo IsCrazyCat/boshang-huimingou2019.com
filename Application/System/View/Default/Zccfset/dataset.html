@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站数据配置</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>网站数据配置 <small></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/DataSetAction" class="form-horizontal" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">注册人数</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="zdRegPeople" id="zdRegPeople" placeholder="请填写虚拟注册人数，为0则为真实注册人数" value="<{$rs_zccf_datainfo.zdRegPeople}>" required >
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">援助金额</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="zdYuanzhuJiner" id="zdYuanzhuJiner" placeholder="请填写援助金额，为0则为真实数据" value="<{$rs_zccf_datainfo.zdYuanzhuJiner}>" required >
+                                </div>
+                            </div>
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">提现金额</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="zdTixianJiner" id="zdTixianJiner" placeholder="请填写提现金额，为0则为真实数据" value="<{$rs_zccf_datainfo.zdTixianJiner}>" class="form-control" required>
+                                    </div>
+                            	</div>
+                            
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">投资次数</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="zdTZNum" placeholder="请填写投资次数，为0则为真实数据" value="<{$rs_zccf_datainfo.zdTZNum}>" class="form-control" required>
+                                    </div>
+                            	</div>
+                           
+                           
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">已创奖金</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="zdJiangjin" placeholder="请填写平台创下奖金，为0则为真实数据" value="<{$rs_zccf_datainfo.zdJiangjin}>" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">已创利息</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="zdLixi" placeholder="请填写平台创下利息，为0则为真实数据" value="<{$rs_zccf_datainfo.zdLixi}>" class="form-control" required>
+                                    </div>
+                                </div>
+                                
+                              
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">提现次数</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="zdTxNum" placeholder="请填写提现次数，为0则为真实数据" value="<{$rs_zccf_datainfo.zdTxNum}>" class="form-control" required>
+                                    </div>
+                            	</div>
+                                
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">在线人数最小值</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="zdOnlineNumMin" placeholder="请输入在线人数最小值，为0的时候则为真实数据，为-1的时候则为最大值+真实数据，大于0为随机数" value="<{$rs_zccf_datainfo.zdOnlineNumMin}>" class="form-control" required>
+                                    </div>
+                            	</div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">在线人数最大值</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="zdOnlineNumMax" placeholder="只有在线人数最小值大于0才生效，必须大于在线人数最小值" value="<{$rs_zccf_datainfo.zdOnlineNumMax}>" class="form-control" required>
+                                    </div>
+                                </div>
+
+
+                                
+                            
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <input class="btn btn-primary" type="submit" value="更新">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+</body>
+
+</html>

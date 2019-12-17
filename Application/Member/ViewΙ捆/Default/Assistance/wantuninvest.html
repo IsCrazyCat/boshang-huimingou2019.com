@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我想要接受援助</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5><a style="color:#00bb9c;margin-right:5px;" href="__URL__/wantuninvest/uId/<{$rs_users.uId}>">我想要接受援助</a> <small> <a style="color:#ff0000;" href="__URL__/wantuninvestlists/uId/<{$rs_users.uId}>">接受援助列表</a></small></h5>
+                        <div class="ibox-tools">
+                            
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/WantUnInvestAction/uiId/<{$array_id}>" class="form-horizontal" id="form-admin-add" >
+                        
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">我的账户</label>
+                                <div class="col-sm-10">
+                                    
+                                    <input type="text" class="form-control" value="<{$rs_users.uUser}>" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">我的手机号</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$rs_users.uTel}>" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">我的支付宝账户</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$rs_users.uZhifubao}>" disabled>
+                                </div>
+                            </div>
+
+                                
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">接受援助金额（元）</label>
+                                    <div class="col-sm-10">
+                                <input type="number" name="uuniJiner" id="uuniJiner" placeholder="输入金额100起提,且为100的倍数!" class="form-control">
+                                    </div>
+                            	</div>
+                           
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">请输入安全密码</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="uZfPwd" id="uZfPwd" placeholder="请输入安全密码" class="form-control">
+                                    </div>
+                                 </div>
+
+                                <if condition="$paramenters.upRepeatInvestment eq 0">
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                                <button class="btn btn-primary" type="submit">提交匹配</button>
+                                        </div>
+                                    </div>
+                                <else/>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                            <if condition="$jiedong_count gt 0">
+                                                <button class="btn btn-primary" type="submit">提交匹配</button>
+                                            <else/>
+                                                <a class="btn btn-primary" type="submit">暂无进行中的投资，请投资下一轮再来提交接受援助</a>
+                                            </if>
+                                        </div>
+                                    </div>
+                                </if>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/jquery.validate.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/messages_zh.min.js"></script> 
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/validate-methods.js"></script> 
+
+
+
+   
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    
+    <script type="text/javascript">
+	$(function(){
+	$("#form-admin-add").validate({
+		rules:{
+			uiUJiner:{
+				required:true,
+			},
+           uZfPwd:{
+                required:true,
+                minlength:6,
+                maxlength:6
+
+            },
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+    
+    
+</body>
+
+</html>

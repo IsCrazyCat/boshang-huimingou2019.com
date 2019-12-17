@@ -1,0 +1,1 @@
+a:6:{i:0;s:4:"utId";i:1;s:8:"utBenJin";i:2;s:8:"utJBLixi";i:3;s:7:"utState";s:3:"_pk";s:4:"utId";s:5:"_type";a:4:{s:4:"utId";s:6:"int(6)";s:8:"utBenJin";s:6:"int(9)";s:8:"utJBLixi";s:11:"varchar(20)";s:7:"utState";s:6:"int(1)";}}

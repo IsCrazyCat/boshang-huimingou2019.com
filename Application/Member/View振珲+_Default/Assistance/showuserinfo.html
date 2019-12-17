@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提供援助人信息</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5><a style="color:#00bb9c; margin-right:5px;" href="__URL__/wantuninvestlists/uId/<{$LoId}>">提供援助人相关信息</a> <small><a style="color:#ff0000" href="__URL__/wantuninvestlists/uId/<{$LoId}>">返回</a></small></h5>
+                        <div class="ibox-tools">
+                            
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                    <form method="post" action="" class="form-horizontal" id="form-admin-add" enctype="multipart/form-data" >
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">提供援助人账户</label>
+                                <div class="col-sm-10">
+                                    <input type="hidden" class="form-control" name="uiUid" value="<{$rs_users.uId}>">
+                                    <input type="text" class="form-control" value="<{$rs_users.uUser}>" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">援助人姓名</label>
+                                <div class="col-sm-10">
+                                    
+                                    <input type="text" class="form-control" value="<{$rs_users.uName}>" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">援助人手机号</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$rs_users.uTel}>" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">援助人微信号</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="<{$rs_users.uWeixin}>" disabled>
+                                </div>
+                            </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">援助人支付宝</label>
+                                    <div class="col-sm-10">
+                                    <input type="text"  value="<{$rs_users.uZhifubao}>" class="form-control" disabled>
+                                    </div>
+                            	</div>
+
+                                
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-10" style="color: #ff0000">
+                                    以下信息为援助人的推荐人联系方式
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">推荐人姓名</label>
+                                    <div class="col-sm-10">
+                                    <input type="text"  value="<{$tuijianren.uName}>" class="form-control" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">推荐人手机号</label>
+                                    <div class="col-sm-10">
+                                    <input type="text"  value="<{$tuijianren.uTel}>" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/jquery.validate.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/messages_zh.min.js"></script> 
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/validate-methods.js"></script> 
+
+
+
+   
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    
+    <script type="text/javascript">
+	$(function(){
+	$("#form-admin-add").validate({
+		rules:{
+            uZfPwd:{
+                required:true,
+
+            },
+           uiImages:{
+                required:true,
+
+            },
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+    
+    
+</body>
+
+</html>

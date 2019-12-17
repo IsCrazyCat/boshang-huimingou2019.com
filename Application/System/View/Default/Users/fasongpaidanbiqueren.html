@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发放排单币确认</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>发放排单币确认 <small></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/paidanbiquerfasongtion" class="form-horizontal" id="form-admin-add" >
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">赠送人ID</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="mrcMUid" value="<{$datainfo.mrcMUid}>" placeholder="请输入账号或手机号码" class="form-control" >
+                                        <input type="text" value="<{$datainfo.mrcMUid}>" placeholder="请输入账号或手机号码" class="form-control" disabled>
+                                    </div>
+                                 </div>
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">发放人账号</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" value="<{$datainfo.mrcMUser}>" placeholder="请输入账号或手机号码" class="form-control" disabled>
+                                    </div>
+                            	 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">发放人姓名</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" value="<{$datainfo.mrcMName}>" class="form-control" disabled>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">发放人手机号</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" value="<{$datainfo.mrcMTel}>" class="form-control" disabled>
+                                    </div>
+                                 </div>
+
+                        
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">当前排单币价格（元）</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="mrcPrice" value="<{$datainfo.mrcPrice}>" class="form-control">
+                                        <input type="number" value="<{$datainfo.mrcPrice}>" class="form-control" disabled>
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">排单币个数（个）</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="mrcHuiPrice" value="<{$datainfo.mrcHuiPrice}>" class="form-control">
+                                        <input type="number" value="<{$datainfo.mrcHuiPrice}>" class="form-control" disabled>
+                                    </div>
+                                 </div>
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">排单币获取类型</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="mrcMorZ" value="<{$datainfo.mrcMorZ}>"  class="form-control">
+                                       
+                                        <span class="btn btn-primary btn-rounded btn-xs" style="margin-top: 5px;">免费发放</span>
+                                    </div>
+                                 </div>
+                            
+                                
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                	<!--
+                                    <button class="btn btn-primary" type="submit">确定发放</button>
+                                    -->
+                                    <input class="btn btn-info" type="submit" value="确定发放">
+                                    <button class="btn btn-default btn-rounded" ><a style="color: #ffffff; font-weight: bold;" href="__URL__/givecode">取消发放</a></button>
+                                   
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/jquery.validate.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/messages_zh.min.js"></script> 
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/validate-methods.js"></script> 
+
+
+
+   
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    
+    <script type="text/javascript">
+	$(function(){
+	$("#form-admin-add").validate({
+		rules:{
+			zuser:{
+				required:true,
+			},
+			mrcRegCode:{
+				required:true,
+                minlength:<{$strNum}>,
+                maxlength:<{$strNum}>
+
+			},
+            mrcPrice:{
+                required:true,
+
+            },
+            mrcHuiPrice:{
+                required:true,
+
+            },
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+    
+    
+</body>
+
+</html>

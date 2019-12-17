@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+    DocumentRoot "D:/wwwroot/huimingou.com"
+	ServerName huimingou.com:80
+    ServerAlias 
+    ServerAdmin webmaster@huimingou.com
+	DirectoryIndex index.html index.htm index.php default.php 
+	##ErrorLog logs/huimingou.com-error.log
+    ##CustomLog logs/huimingou.com-access_%Y%m%d.log comonvhost
+	php_admin_value open_basedir "D:\wwwroot\huimingou.com\;D:\UPUPW_AP5.4-1510\UPUPW_AP5.4\memcached\;D:\UPUPW_AP5.4-1510\UPUPW_AP5.4\phpmyadmin\;D:\UPUPW_AP5.4-1510\UPUPW_AP5.4\temp\;C:\Windows\Temp\"
+<Directory "D:/wwwroot/huimingou.com">
+    Options FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+<LocationMatch "/(inc)/(.*)$">
+    Require all denied
+</LocationMatch>
+<LocationMatch "/(attachment|attachments|uploadfiles|avatar)/(.*).(php|php5|phps|asp|asp.net|jsp)$">
+    Require all denied
+</LocationMatch>
+</VirtualHost>

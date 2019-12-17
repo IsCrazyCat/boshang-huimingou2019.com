@@ -1,0 +1,44 @@
+<if condition="  $smarty.request.hasleftpanel neq 1 ">
+
+	<div class="panel-overlay"></div>
+	<!-- Left Panel with Reveal effect -->
+	<div class="panel panel-left panel-cover theme-fw " id='panel-left-box'>
+		<div class="content-block">
+			<img 	src="__PUBLIC__/Default/wap/images/left_bg.png" class="bg_img"/>
+			<if condition="  $is_login eq 1">
+				<div class="rela_user">
+					<div class="user_pic">
+						<img src="{function name="wap_user_avatar" uid="$data.user_id"}" style="width:2.4rem;height:2.4rem;"/>
+					</div>
+					<div class="use_name tc">您好，{$data.user_name}</div>
+					<div class="w_b user_but">
+						<a href="#" onclick="RouterURL('{wap_url a="index" r="uc_center" p="epage=$data.act"}','#uc_center');" class="w_b_f_1 tc"><i class="icon iconfont">&#xe60b;</i>&nbsp;&nbsp;&nbsp;账户</a>
+						<a href="#" data-url="{wap_url a="index" r="login_out" p="epage=$data.act"}" onclick="loginout();" id="login-out-btn"  class="w_b_f_1 tc"><i class="icon iconfont">&#xe60d;</i>&nbsp;&nbsp;&nbsp;退出</a>
+					</div>
+				</div>
+				<else>
+					<div class="rela_user">
+						<div class="user_pic">
+							<img src="__PUBLIC__/Default/wap/images/login_out.png" width="100%"/>
+						</div>
+						<div class="use_name tc">您好，您还未登录</div>
+						<div class="w_b user_but">
+							<a  class="w_b_f_1  tc"  href="#" onclick="RouterURL('{wap_url a="index" r="login" p="epage=$data.act"}','#login' <if condition="  $is_weixin">,1<else>,2 </if>);" ><i class="icon iconfont">&#xe60b;</i>&nbsp;&nbsp;&nbsp;登录</a>
+							<a  class="w_b_f_1  tc"  href="#" onclick="RouterURL('{wap_url a="index" r="register" p="epage=$data.act"}','#register' <if condition="  $is_weixin">,1<else>,2 </if>);" ><i class="icon iconfont">&#xe60f;</i>&nbsp;&nbsp;&nbsp;注册</a>
+						</div>
+					</div>
+			</if>
+		</div>
+		<div class="new_list_block">
+			<dl>
+				<dd >
+					<a href="#" onclick="RouterURL('{wap_url a="index" r="init" p="epage=$data.act"}','#init');">
+					<div class="i_father"><i class="icon iconfont">&#xe608;</i></div>
+					<span>首页</span>
+					</a>
+				</dd>
+
+			</dl>
+		</div>
+
+</if>

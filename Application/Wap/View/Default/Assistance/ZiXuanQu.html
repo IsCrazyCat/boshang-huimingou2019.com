@@ -1,0 +1,65 @@
+<include file="Public/header"/>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/??sm.min.js,sm-extend.min.js' charset='utf-8'></script>
+<header class="bar bar-nav">
+    <a class="icon  pull-left" id="zuo" href="/wap">返回</a>
+    <a class="icon  pull-right" id="you" href="">刷新</a>
+    <h1 class="title">交易区</h1>
+</header>
+<style>
+    #zuo {
+        color: #00FF00;
+        font-size: 15px;
+    }
+    #you {
+        color: #00FF00;
+        font-size: 15px;
+    }
+</style>
+<div class="content">
+    <div class="buttons-tab">
+        <a href="__URL__/index/uId/<{$uIdjs}>" class="  button">优选区</a>
+        <a href="__URL__/SuiJiQu/uId/<{$uIdjs}>" class="  button">随机区</a>
+        <a href="__URL__/ZiXuanQu/uId/<{$uIdjs}>" class=" active button">自选区</a>
+    </div>
+    <div class="content-block">
+        <div class="tabs">
+
+
+
+            <div  >
+                <div class="content-block">
+
+
+
+                    <div class="card">
+                        <div class="card-header">自选区</div>
+                        <div class="card-content">
+
+                            <form method="post" action="__URL__/ziXuanQuTj/ceshi/<{$ceshi}>/biaojige<{$biaojige}>" id="form-admin-add" >
+                                <div class="content-padded grid-demo">
+                                    <div class="row" style="margin:0px;">
+                                        <div class="col-30">请输入账号:</div>
+                                        <div class="col-70">
+                                            <input style="width: 100%;height: 32px;margin-left:1rem;   border:1px solid #469987; " type="text" name="uiUJiner"   placeholder="今天您还可以搜索<{$haisheng}>次" id="uiUJiner" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-100"><button class="button   button-success" type="submit">搜索</button></div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="card-footer"><span style="color:#ff0000; font-weight:bold">距下次可交割倒计时(小时)：<{$shifouke}></span></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>会员等级列表</title>
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <!-- Data Tables -->
+    <link href="__PUBLIC__/Default/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5><a style="color:#00bb9c;margin-right:5px;" href="#">我推荐的会员列表</a> <small><a style="color: #ff0000" href="__URL__/useradd/uId/<{$uId}>">注册下级会员</a></small></h5>
+                        <div class="ibox-tools">
+                            
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <!--
+                                    <th>ID</th>
+                                    -->
+                                    <th><span class="dropdown hidden-xs">会员</span>账户</th>
+                                    <th class="dropdown hidden-xs">姓名</th>
+                                    <th>姓别</th>
+                                    <th class="dropdown hidden-xs">手机号码</th>
+                                   
+                                    <th class="dropdown hidden-xs">等级</th>
+                                    <th class="dropdown hidden-xs">推荐人</th>
+                                    <th class="dropdown hidden-xs">注册时间</th>
+                                    <th ><span class="dropdown hidden-xs">注册</span>状态</th>
+                                    <th class="dropdown hidden-xs">投资状态</th>
+                                    <th class="dropdown hidden-xs">投资次数</th>
+                                    <th class="dropdown hidden-xs">登陆次数</th>
+                                    
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="rs_users" id="val_users">
+                                <tr class="gradeX">
+                                <!--
+                                    <td><{$val_users.uId}></td>
+                                    -->
+                                    <td><!--<a href="__URL__/userslistsson/uId/<{$val_users.uId}>">--><{$val_users.uUser}><!--</a>--></td>
+                                    <td class="dropdown hidden-xs"><{$val_users.uName}></td>
+                                    <if condition="$val_users.uSex eq 1">
+                                    <td>男</td>
+                                    <else/>
+                                    <td>女</td>
+                                    </if>
+                                    <td class="dropdown hidden-xs"><{$val_users.uTel}></td>
+                                   
+                                    <php>
+                                    $uVip=$val_users["uVip"];
+                                    if($uVip==0){
+                                        if($val_users["uId"]==1){
+                                            $dengji="<span style='color:#ff0000'>超级会员</span>";
+                                        }else{
+                                            $dengji="注册会员";
+                                        }
+                                    }else{
+                                        $reggrades=M("reggrades");
+                                        $rs_vip=$reggrades->where("rgId={$uVip}")->find();
+                                        $dengji=$rs_vip["rgName"];
+                                    }
+                                    
+                                    </php>
+                                    <td class="dropdown hidden-xs"><{$dengji}></td>
+                                    <php>
+                                    $users=M("users");
+                                    $uTuiId=$val_users["uTuiId"];
+                                    if($uTuiId==0){
+                                        $tuijianren="<span style='color:#ff0000'>超级会员</span>";
+                                    }else{
+                                        $rs_tuijianUsers=$users->where("uId={$uTuiId}")->find();
+                                        $tuijianren=$rs_tuijianUsers["uName"];
+                                    }
+                                    </php>
+                                    <td class="dropdown hidden-xs"><{$tuijianren}></td>
+                                    <td class="dropdown hidden-xs"><{$val_users.uRegDate}></td>
+                                    <if condition="$val_users.uState eq 0">
+                                    <td >
+                                      <!--   <a class="btn btn-default btn-rounded btn-xs" href="__URL__/setregstate/uId/<{$val_users.uId}>">未激活
+                                        </a> -->
+                                          <a class="btn btn-default btn-rounded btn-xs" href="#">未激活
+                                        </a>
+                                    </td>
+                                   
+                                    <else/>
+                                    <td ><a class="btn btn-primary btn-rounded btn-xs" >已激活</a></td>
+                                    </if>
+
+                                    <if condition="$val_users.uTouziState eq 0">
+                                    <td class="dropdown hidden-xs"><a class="btn btn-warning btn-rounded btn-xs">从未投资</a></td>
+                                   
+                                    <elseif condition="$val_users.uTouziState eq 1"/>
+                                    <td class="dropdown hidden-xs"><a class="btn btn-info btn-rounded btn-xs" >已经投资</a></td>
+                                    
+                                    </if>  
+                                    <td class="dropdown hidden-xs"><{$val_users.uTouziNum}> 次</td>
+                                    <td class="dropdown hidden-xs"><{$val_users.uLoginNum}> 次</td>
+                                </tr>
+                                
+                            </volist>    
+                            </tbody>
+                            
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <!--<script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>-->
+    <script>
+        var $parentNode = window.parent.document;
+        if ($(".tooltip-demo").tooltip({
+            selector: "[data-toggle=tooltip]",
+            container: "body"
+        }), $(".modal").appendTo("body"), $("[data-toggle=popover]").popover(), $(".collapse-link").click(function() {
+            var o = $(this).closest("div.ibox"),
+                e = $(this).find("i"),
+                i = o.find("div.ibox-content");
+            i.slideToggle(200),
+                e.toggleClass("fa-chevron-up").toggleClass("fa-chevron-down"),
+                o.toggleClass("").toggleClass("border-bottom"),
+                setTimeout(function() {
+                        o.resize(),
+                            o.find("[id^=map-]").resize()
+                    },
+                    50)
+        }), $(".close-link").click(function() {
+            var o = $(this).closest("div.ibox");
+            o.remove()
+        }), top == this) {
+            //update lishibo by 20190308
+            var gohome = '<div class="gohome"><a class="animated bounceInUp" href="http://huimingou.com/Wap/index" title="返回首页"><i class="fa fa-home"></i></a></div>';
+            $("body").append(gohome)
+        }
+    </script>
+    <script>
+        $(document).ready(function(){$(".dataTables-example").dataTable();var oTable=$("#editable").dataTable();oTable.$("td").editable("../example_ajax.php",{"callback":function(sValue,y){var aPos=oTable.fnGetPosition(this);oTable.fnUpdate(sValue,aPos[0],aPos[1])},"submitdata":function(value,settings){return{"row_id":this.parentNode.getAttribute("id"),"column":oTable.fnGetPosition(this)[2]}},"width":"90%","height":"100%"})});function fnClickAddRow(){$("#editable").dataTable().fnAddData(["Custom row","New row","New row","New row","New row"])};
+    </script>
+
+</body>
+
+</html>

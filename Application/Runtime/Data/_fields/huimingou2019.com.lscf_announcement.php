@@ -1,0 +1,1 @@
+a:8:{i:0;s:5:"annId";i:1;s:6:"annNum";i:2;s:7:"annDate";i:3;s:8:"annTitle";i:4;s:10:"annContent";i:5;s:7:"annShow";s:3:"_pk";s:5:"annId";s:5:"_type";a:6:{s:5:"annId";s:6:"int(8)";s:6:"annNum";s:11:"varchar(14)";s:7:"annDate";s:4:"date";s:8:"annTitle";s:11:"varchar(50)";s:10:"annContent";s:4:"text";s:7:"annShow";s:6:"int(1)";}}

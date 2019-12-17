@@ -1,0 +1,1 @@
+a:9:{i:0;s:4:"zfId";i:1;s:5:"zfNum";i:2;s:7:"zfTitle";i:3;s:7:"zfColor";i:4;s:8:"zfImages";i:5;s:5:"zfUrl";i:6;s:7:"zfOnOff";s:3:"_pk";s:4:"zfId";s:5:"_type";a:7:{s:4:"zfId";s:6:"int(5)";s:5:"zfNum";s:6:"int(5)";s:7:"zfTitle";s:12:"varchar(100)";s:7:"zfColor";s:10:"varchar(7)";s:8:"zfImages";s:12:"varchar(300)";s:5:"zfUrl";s:12:"varchar(300)";s:7:"zfOnOff";s:6:"int(1)";}}

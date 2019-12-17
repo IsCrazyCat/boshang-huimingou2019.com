@@ -1,0 +1,60 @@
+
+<include file="Public/header"/>
+    <?php
+    $this->_var['hide_back'] = 1;
+    $this->_var['hide_footer'] = 0;
+    ?>
+<style> body{background-color: #f7f7f7;}</style>
+<div class="page" id='{$data.act}'>
+
+    <if condition=" $hide_footer neq 1">
+        <nav class="bar bar-tab">
+            <a class="tab-item  active" href="/wap" >
+            <i class="icon iconfont">&#xe63f;</i>
+            <span class="tab-label">首页</span>
+            </a>
+
+            <a class="tab-item " href="#" onclick="RouterURLWAP('/wap/Finance/chushiye/uId/<{$uId}>','',1)">
+            <i class="icon iconfont">&#xe63b;</i>
+            <span class="tab-label">数据区</span>
+            </a>
+
+            <a class="tab-item" href="#"  onClick="return confirm('正在开发、敬请期待！');">
+            <i class="icon " style="background-image: url('http://huimingou.com/Uploads/mi/shangcheng2.svg');height: 25px;width: 30px;"></i>
+            <span class="tab-label">商城</span>
+            </a>
+
+            <a class="tab-item"  href="#" onclick="RouterURLWAP('/wap/Users/chushiye/uId/<{$uId}>','',1)">
+            <i class="icon iconfont">&#xe640;</i>
+            <span class="tab-label">我的</span>
+            </a>
+
+            </nav>
+    </if>
+
+    <div class="content pull-to-refresh-content">
+		  <header class="bar bar-nav">
+            <h1 class='title'>注册用户</h1>
+        </header>
+   		     <div class="content">
+            <div class="content-block">
+                <p><a href="#" class="button button-fill button-success" onclick="RouterURLWAP('/wap/Users/useradd/uId/<{$uId}>','',1)">平台注册下级</a></p>
+                <p><a href="#" class="button button-fill button-danger" onclick="RouterURLWAP('/wap/Users/FenxiangZhuceEr/uId/<{$uId}>','',1)">分享链接注册</a></p>
+                <p><a href="#" class="button button-fill button-warning" onclick="RouterURLWAP('/wap/Users/Erweima/uId/<{$uId}>','',1)">分享二维码注册</a></p>
+                <p><a href="#" class="button button-fill button-warning" onclick="RouterURLWAP('/wap/Users/jihuohuiyuan/uId/<{$uId}>','',1)">激活下级注册会员</a></p>
+            </div>
+        </div>
+     
+
+
+ 
+
+        <script type="text/javascript" src="__PUBLIC__/Default/wap/qiuqiuqiu/kefu/js/qq.js"></script>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Default/wap/qiuqiuqiu/kefu/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Default/wap/qiuqiuqiu/kefu/css/htmleaf-demo.css">
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Default/wap/qiuqiuqiu/kefu/css/style.css">      
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Default/wap/css/msui/sm/sm.min.css";/>
+        <include file="Public/footer"/>
+
+

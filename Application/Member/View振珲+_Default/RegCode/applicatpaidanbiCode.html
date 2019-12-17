@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>申请购买排单币</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+    <link href="__PUBLIC__/Default/dist/wan-spinner.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5><a style="color:#00bb9c;margin-right:5px;" href="__URL__/applicationregcode/uId/<{$rs_users.uId}>">申请购买排单币</a> <small><a style="color:#ff0000" href="__URL__/reviewcode">排单币申请记录</a></small></h5>
+                        <div class="ibox-tools">
+                            
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/ApplipaidanbinRegCodeAction" class="form-horizontal" id="form-admin-add" enctype="multipart/form-data">
+                            
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">申请人账户</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="uarUid" value="<{$rs_users.uId}>">
+                                        <input type="text" value="<{$rs_users.uUser}>" class="form-control" disabled>
+                                    </div>
+                            	 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">收款人姓名</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" value="<{$sZhifubaoName}>" class="form-control" disabled>
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">收款卡号（民生银行）</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="uarShouKuanUser" value="<{$sZhifubao}>" class="form-control">
+                                        <input type="text"  value="<{$sZhifubao}>" class="form-control" disabled>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">付款账户（支付宝）</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="uarZhifuUser" id="uarZhifuUser" value="<{$rs_users.uZhifubao}>" class="form-control">
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">排单币当前售价</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="uarPrice" value="<{$parametersPrice}>" class="form-control" >
+                                        <input type="number" value="<{$parametersPrice}>" class="form-control" disabled>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">购买个数</label>
+                                    <div class="col-sm-10 wan-spinner-1">
+                                    <input style="height: 32px; margin-left:10px; margin-right:10px; text-align: center; border:1px solid #469987; " type="number" name="paycodenum" step="1" id="paycodenum" value="1">
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">打款金额</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="uarPayPrice" id="uarPayPrice" class="form-control">
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">请确认是否已经打款</label>
+
+                                    <div class="col-sm-10">
+                                    
+                                        <label class="checkbox-inline">
+                                            <input type="radio" value="1" name="fukuanyesno" id="fukuanyesno" > 已经打款</label>
+                                        <label class="checkbox-inline">
+                                            <input type="radio" value="0" name="fukuanyesno" id="fukuanyesno" > 还未付款</label>
+
+                                    </div>
+                                </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">上传打款截图</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="uarFiles" id="uarFiles" class="form-control">
+                                    </div>
+                                 </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group" style="margin-top:-30px;">
+                                <label class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-10">
+                                        <span style="color:#ff0000; font-weight:bold">温馨提示:用支付宝转到收款账户即可,平台4小时内审核</span>
+                                    </div>
+                                 </div>
+                                
+                            <div class="hr-line-dashed" style="margin-top:-10px;"></div>
+                            <!--
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-primary" type="submit">确定购买？</button>
+                                </div>
+                            </div>
+                            -->
+                            <div class="form-group">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <input class="btn btn-primary" type="submit" value="确定购买？">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/jquery.validate.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/messages_zh.min.js"></script> 
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/validate-methods.js"></script> 
+
+
+
+   
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    
+    <script type="text/javascript">
+	$(function(){
+	$("#form-admin-add").validate({
+		rules:{
+			uarZhifuUser:{
+				required:true,
+			},
+			fukuanyesno:{
+				required:true,
+
+			},
+            paycodenum:{
+                required:true,
+            },
+            uarPayPrice:{
+                required:true,
+            },
+            uarFiles:{
+                required:true,
+            },
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+
+<script src="__PUBLIC__/Default/dist/wan-spinner.js"></script> 
+  <script>
+  $(document).ready(function() {
+    var options = {
+      maxValue: <{$rs_parameters.upRegCodeNum}>,
+      minValue: 1,
+      step: 1,
+      inputWidth: 150,
+      start: 0,
+      plusClick: function(val) {
+        console.log(val);
+      },
+      minusClick: function(val) {
+        console.log(val);
+      },
+      exceptionFun: function(val) {
+        console.log("excep: " + val);
+      },
+      valueChanged: function(val) {
+        console.log('change: ' + val);
+      }
+    }
+    $(".wan-spinner-1").WanSpinner(options);
+
+  });
+  </script>   
+    
+    
+</body>
+
+</html>

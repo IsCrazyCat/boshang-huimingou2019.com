@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>系统平台规则简介</title>
+    
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+         <form method="post" action="__URL__/InfoAction" class="form-horizontal">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>网站玩法及规则编辑</h5>
+                        <div class="hr-line-dashed"></div>
+                    </div>
+
+                      <!-- 加载编辑器的容器 -->
+    <script id="container" name="ziContent" type="text/plain"><{$rs_info.ziContent}>
+    </script>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Default/ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="__PUBLIC__/Default/ueditor/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container', {
+    autoHeightEnabled: true,
+    autoFloatEnabled: true
+});
+    </script>
+
+                </div>
+            </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                        <!--
+                            <button class="btn btn-primary" type="submit">保存</button>
+                        -->
+                        <input class="btn btn-primary" type="submit" value="保存">
+                        </div>
+                    </div>
+        </div>
+
+        </from>
+    
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/summernote/summernote.min.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/summernote/summernote-zh-CN.js"></script>
+</body>
+
+</html>

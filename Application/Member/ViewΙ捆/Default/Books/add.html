@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我要留言</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5><a style="color:#00bb9c;margin-right:5px;" href="__URL__/add">我要留言</a> <small><a href="__URL__/lists/st/1" style="color:#ff0000">留言记录</a></small></h5>
+                        <div class="ibox-tools">
+                           
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/AddAction" class="form-horizontal" id="form-admin-add" >
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">留言账户</label>
+                                <div class="col-sm-10">
+                                    <input type="hidden" class="form-control" name="bUser" value="<{$uUser}>">
+                                    <input type="hidden" class="form-control" name="bTel" value="<{$uTel}>">
+                                    <input type="text" class="form-control" value="<{$uUser}>" disabled>
+                                </div>
+                            </div>
+
+                            <!--
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">留言手机号</label>
+                                <div class="col-sm-10">
+                                    
+                                    <input type="text" class="form-control" value="<{$uTel}>" disabled>
+                                </div>
+                            </div>
+                            -->
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">留言标题</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="bTitle" id="bTitle" class="form-control">
+                                    </div>
+                            	</div>
+                            
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">留言内容</label>
+                                    <div class="col-sm-10">
+                                    <textarea class="input-text form-control" id="bContent" name="bContent" rows="8"></textarea>
+                                    </div>
+                            	</div>
+                                
+                            <div class="hr-line-dashed"></div>
+                            <!--
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-primary" type="submit">提交留言</button>
+                                   
+                                </div>
+                            </div>
+                            -->
+                            <div class="form-group">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <input class="btn btn-primary" type="submit" value="提交留言">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/jquery.validate.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/messages_zh.min.js"></script> 
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/validate-methods.js"></script> 
+
+
+
+   
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    
+    <script type="text/javascript">
+	$(function(){
+	$("#form-admin-add").validate({
+		rules:{
+			bTitle:{
+				required:true,
+			},
+			bContent:{
+				required:true,
+				minlength:5,
+			},
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+    
+    
+</body>
+
+</html>

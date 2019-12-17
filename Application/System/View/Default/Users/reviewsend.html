@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>审核发放手续费</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>审核发放手续费 <small><a href="__URL__/reviewcode/at/0">未审核手续费列表</a></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/ReviewSendAction/uarId/<{$rs_apply.uarId}>" class="form-horizontal" id="form-admin-add" >
+                                <php>
+                                        $uId=$rs_apply["uarUid"];
+                                        $user=M("users");
+                                        $rs_user=$user->where("uId={$uId}")->field("uId,uUser,uTel,uName")->find();
+                                </php>
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">申请人账户</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" class="form-control" name="mrcMUid" value="<{$rs_user.uId}>" >
+                                        <input type="text" class="form-control" value="<{$rs_user.uUser}>" disabled>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">申请人姓名</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="<{$rs_user.uName}>" disabled>
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">申请人电话</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" value="<{$rs_user.uTel}>" disabled>
+                                    </div>
+                                 </div>                                              
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">手续费</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="mrcRegCode" value="<{$codestr}>" class="form-control">
+                                        <input type="text" value="<{$codestr}>" class="form-control" disabled>
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">当前手续费价格（元）</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="mrcPrice" value="<{$rs_apply.uarPrice}>" class="form-control">
+                                        <input type="number" value="<{$rs_apply.uarPrice}>" class="form-control" disabled>
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">优惠价格（元）</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="mrcHuiPrice" value="<{$rs_apply.uarHuiPrice}>" class="form-control">
+                                        <input type="number" value="<{$rs_apply.uarHuiPrice}>" class="form-control" disabled>
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">实际支付价格（元）</label>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="mrcPayPrice" value="<{$rs_apply.uarPrice}>"  class="form-control">
+                                        <input type="number"  value="<{$rs_apply.uarPrice}>"  class="form-control" disabled>
+                                    </div>
+                                 </div>
+
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">找回的金额</label>
+                                    <div class="col-sm-10">
+                                         <input class="form-control" type="hidden" name="returnPrices" value="<{$rs_apply.uarReturnPrice}>" >
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarReturnPrice}>" disabled >
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">操作次数</label>
+                                    <div class="col-sm-10">
+                                    <if condition="$rs_apply.uarCodeNumState eq 0">
+                                        <input class="form-control" type="hidden" name="uarCodeNumState" value="1" >
+                                        <input class="form-control" type="text" value="1" disabled >
+                                    <else/>
+                                         <input class="form-control" type="hidden" name="uarCodeNumState" value="<{$rs_apply.uarCodeNumState}>" >
+                                        <input class="form-control" type="text" value="<{$rs_apply.uarCodeNumState}>" disabled >
+                                        </if>
+                                    </div>
+
+                                 </div>
+
+
+
+                            <div class="form-group">
+                            <label class="col-sm-2 control-label">操作类型</label>
+                            <div class="col-sm-10">
+                                <select data-placeholder="请选择操作类型" name="uarState" class="chosen-select form-control" required>
+                                    <option value="">请选择操作类型</option>
+                                    <option value="1" hassubinfo="true">审核通过，成功发放</option>
+                                    <option value="2" hassubinfo="true">信息错误，虚假提交</option>
+                                    <option value="3" hassubinfo="true">多次信息错误，冻结账户</option>
+                                    <option value="4" hassubinfo="true">恶意提交错误信息，封杀账户</option>
+
+                                </select>
+                            </div>
+                        </div>
+                            
+                                
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                <!--
+                                    <button class="btn btn-primary" type="submit">操作</button>
+                               	-->
+                                <input type="submit" class="btn btn-primary" value="操作">
+                                   
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/jquery.validate.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/messages_zh.min.js"></script> 
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/validate-methods.js"></script> 
+
+
+
+   
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    
+    <script type="text/javascript">
+	$(function(){
+	$("#form-admin-add").validate({
+		rules:{
+			rgName:{
+				required:true,
+			},
+			rgPeople:{
+				required:true,
+
+			},
+            rgSJNextPeople:{
+                required:true,
+
+            },
+			rgLixi:{
+				required:true,
+
+			},
+            rgTJJangjin:{
+                required:true,
+
+            },
+            rgShengjiJiangjin:{
+                required:true,
+
+            },
+            rgShuifei:{
+                required:true,
+
+            },
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+    
+    
+</body>
+
+</html>

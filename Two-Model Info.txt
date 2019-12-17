@@ -1,0 +1,32 @@
+机器运行的时候请阅读如下说明
+
+注意：AMH上请设置
+
+AMH ? AMcrontab 任务计划
+
+2  0  0	 1-31/1	 *  *
+amh amcrontab curl http://您的后台域名/Automaticexecution/OperatingSystemAutomaticallyPerformsCalculationOfInterest
+
+域名的配置请参考Application/Common/config.php文件里
+System  其中这个模块指向了服务器自动运行的域名，请你设置 二级域名
+例如默认配置为
+system 指向 System  后台 模块 及自动运行模块
+www    指向 Member  会员中心 模块
+
+假设你都解析了两个二级域名为 cfxt.com的域名
+
+此时，配置服务器计划任务的时候为：
+
+2  0  0	 1-31/1	 *  *
+amh amcrontab curl http://system.cfxt.com/Automaticexecution/OperatingSystemAutomaticallyPerformsCalculationOfInterest
+//定时发放每日投资中利息
+
+http://system.cfxt.com/Automaticexecution/TheOperatingSystemAutomaticallyPerformsCalculationOfPastInterest
+//定时发放每日排队中利息
+
+
+
+
+一定记得后台会员参数哪里设置每日发放利息，否则不生效
+
+版本号：v2.1.0  2016-08-20    【带宣传网站后台的】

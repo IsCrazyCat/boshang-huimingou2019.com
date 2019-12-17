@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>管理员列表</title>
+   
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+        <foreach name="rs_admin" item="val_admin">
+            <div class="col-sm-4">
+                <div class="contact-box">
+                    <a href="#">
+                        <div class="col-sm-4">
+                            <div class="text-center">
+                            <if condition="$val_admin.aImages eq null">
+                            <if condition="$val_admin.aSex eq 1">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="__PUBLIC__/Default/img/default_1.jpg">
+                            <else/>
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="__PUBLIC__/Default/img/default_2.jpg">
+                            </if>
+                            <else/>
+                                <img alt="image" class="img-circle m-t-xs img-responsive" src="__ROOT__/<{$val_admin.aImages}>">
+                                </if>
+                                <div class="m-t-xs font-bold"><{$val_admin.aUser}></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <h3><strong><{$val_admin.aName}></strong>
+                            <if condition="$val_admin.aPowers eq 0">
+                                <a class="btn btn-info btn-rounded btn-xs"  style="color:#ffffff">正常</a>
+                            <else/>
+                                <if condition="$val_admin.aErrorPwdNum eq -1">
+                                <a class="btn btn-danger btn-rounded btn-xs" href="__URL__/SetErrN/aId/<{$val_admin.aId}>/errNum/0" style="color:#ffffff">管理员锁定</a>
+                                <elseif condition="$val_admin.aErrorPwdNum eq $systemEPLN "/>
+                                <a class="btn btn-warning btn-rounded btn-xs" href="__URL__/SetErrN/aId/<{$val_admin.aId}>/errNum/0" style="color:#ffffff">系统锁定</a>
+                                <else/>
+                                 <a class="btn btn-info btn-rounded btn-xs" href="__URL__/SetErrN/aId/<{$val_admin.aId}>/errNum/-1" style="color:#ffffff">正常</a>
+                                </if>
+                            </if>
+                            </h3>
+                            <p><i class="fa fa-map-marker"></i><if condition="$val_admin.aPowers eq 0"> 系统管理员 
+                             <elseif condition="$val_admin.aPowers eq 1"/> 超级管理员 <elseif condition="$val_admin.aPowers eq 2" /> 普通管理员 </if>
+                             <if condition="$val_admin.aPowers eq 0">
+                                <a class="btn btn-primary btn-rounded btn-xs" style="color:#ffffff">有效</a>
+                             <else/>
+                                 <if condition="$val_admin.aStatic eq 1">
+                                    <a class="btn btn-primary btn-rounded btn-xs" href="__URL__/SetLock/aId/<{$val_admin.aId}>/lock/0" style="color:#ffffff">有效</a>
+                                 <else/>
+                                    <a class="btn btn-default btn-rounded btn-xs" href="__URL__/SetLock/aId/<{$val_admin.aId}>/lock/1" style="color:#ffffff">停用</a>
+                                 </if>
+                            </if>
+                             </p>
+                            <address>
+                            性别：<if condition="$val_admin.aSex eq 1">男
+                            <else/>
+                            女
+                            </if>
+                            <br>
+                            Tel：<{$val_admin.aTel}><br>
+                            E-mail：<{$val_admin.aEmail}><br>
+                            <if condition="$val_admin.aPowers eq 0">
+                                <if condition="$sessionPowers eq 0">
+                                    <a href="__URL__/update/aId/<{$val_admin.aId}>">修改我的资料</a>
+                                <else/>
+                                    系统内置管理员
+                                </if>
+                            
+                            <else/>
+                                <if condition="$val_admin.aId eq $sessionaId">
+                                    当前登录<a href="__URL__/oneupdate/aId/<{$val_admin.aId}>"> 修改资料</a>
+                                <else/>
+                                    <if condition="$sessionPowers eq 1 OR $sessionPowers eq 0">
+                                        <a href="__URL__/update/aId/<{$val_admin.aId}>"> 修改</a> | <a href="__URL__/Del/aId/<{$val_admin.aId}>">删除</a>
+                                    <else/>
+                                        无权限修改删除
+                                    </if>
+                                </if>
+                            </if>
+                        </address>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+            </div>
+          </foreach>  
+        </div>
+    </div>
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script>
+        $(document).ready(function(){$(".contact-box").each(function(){animationHover(this,"pulse")})});
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+
+<include file="Public/header"/>
+    <?php
+    $this->_var['hide_back'] = 1;
+    $this->_var['hide_footer'] = 0;
+    ?>
+<style> body{background-color: #f7f7f7;}</style>
+<div class="page" id='{$data.act}'>
+
+    <if condition=" $hide_footer neq 1">
+        <nav class="bar bar-tab">
+            <a class="tab-item  " href="#" onclick="RouterURLWAP('/wap/index','',1)">
+            <i class="icon iconfont">&#xe63f;</i>
+            <span class="tab-label">首页</span>
+            </a>
+
+            <a class="tab-item active" href="#" onclick="RouterURLWAP('/wap/Finance/chushiye/uId/<{$uId}>','',1)">
+            <i class="icon iconfont">&#xe63b;</i>
+            <span class="tab-label">数据区</span>
+            </a>
+
+            <a class="tab-item" href="#"  onClick="return confirm('正在开发、敬请期待！');">
+            <i class="icon " style="background-image: url('http://huimingou.com/Uploads/mi/shangcheng2.svg');height: 25px;width: 30px;"></i>
+            <span class="tab-label">商城</span>
+            </a>
+
+            <a class="tab-item"  href="#" onclick="RouterURLWAP('/wap/Users/chushiye/uId/<{$uId}>','',1)">
+            <i class="icon iconfont">&#xe640;</i>
+            <span class="tab-label">我的</span>
+            </a>
+
+            </nav>
+    </if>
+
+       <div class="content pull-to-refresh-content">
+
+        <!-- 这里是页面内容区 -->
+        <header class="bar bar-nav">
+            <h1 class='title'>数据区</h1>
+        </header>
+        <div class="content">
+            <div class="content-block qius">
+                <p style="padding-top: 6px"><a  class="button button-fill" onclick="RouterURLWAP('/wap/Finance/index/uId/<{$uId}>','',1)">我的资产</a></p>
+                <p style="padding-top: 6px"><a href="#" class="button button-fill button-success" onclick="RouterURLWAP('/wap/Finance/withdrawals/uId/<{$uId}>','',1)">资产提现</a></p>
+                <p style="padding-top: 6px"><a href="#" class="button button-fill button-danger" onclick="RouterURLWAP('/wap/Finance/moneylogs/uId/<{$uId}>','',1)">财务记录</a></p>
+                <p style="padding-top: 6px"><a href="#" class="button button-fill button-warning" onclick="RouterURLWAP('/wap/RegCode/PaidanbiwCode/at/1','',1)">手续费购买转帐记录</a></p>
+                <p style="padding-top: 6px"><a href="#" class="button button-fill button-danger" onclick="RouterURLWAP('/wap/RegCode/ReviewCode/at/1','',1)">激活码购买转帐记录</a></p>
+                <p style="padding-top: 6px"><a href="#" class="button button-fill button-warning" onclick="RouterURLWAP('/wap/index/index','',1)">星级记录</a></p>
+                <p style="padding-top: 6px"><a href="#" class="button button-fill button-success" onclick="RouterURLWAP('/wap/Finance/scjflogs/uId/<{$uId}>','',1)">商城积分记录</a></p>
+                <p style="display: none">
+                    <a href="#" class="button button-fill button-warning" onclick="RouterURLWAP('/wap/index/index','',1)">诚信金记录</a>
+                </p>
+            </div>
+        </div>
+
+
+    
+        <include file="Public/footer"/>
+
+

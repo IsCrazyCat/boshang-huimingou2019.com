@@ -1,0 +1,389 @@
+
+<include file="Public/header"/>
+    <?php
+    $this->_var['hide_back'] = 1;
+    $this->_var['hide_footer'] = 0;
+    ?>
+<style> body{background-color: #f7f7f7;}</style>
+<div class="page" id='{$data.act}'>
+
+    <if condition=" $hide_footer neq 1">
+        <nav class="bar bar-tab">
+            <a class="tab-item  active" href="#" >
+            <i class="icon iconfont">&#xe63f;</i>
+            <span class="tab-label">首页</span>
+            </a>
+
+            <a class="tab-item " href="#" onclick="RouterURLWAP('/wap/Finance/chushiye/uId/<{$uId}>','',1)">
+            <i class="icon iconfont">&#xe63b;</i>
+            <span class="tab-label">数据区</span>
+            </a>
+
+            <a class="tab-item" href="#"  onClick="return confirm('正在开发、敬请期待！');">
+            <i class="icon " style="background-image: url(../../Uploads/mi/shangcheng2.svg);height: 25px;width: 30px;"></i>
+            <span class="tab-label">商城</span>
+            </a>
+
+            <a class="tab-item"  href="#" onclick="RouterURLWAP('/wap/Users/chushiye/uId/<{$uId}>','',1)">
+            <i class="icon iconfont">&#xe640;</i>
+            <span class="tab-label">我的</span>
+            </a>
+
+            </nav>
+    </if>
+
+    <div class="content ">
+
+        <!-- 这里是页面内容区 -->
+
+      <!--  <div class="pull-to-refresh-layer">
+            <div class="preloader"></div>
+            <div class="pull-to-refresh-arrow"></div>
+        </div>-->
+        <!--网站主页-->
+        <div class="swiper-container" data-space-between='10'>
+
+            <marquee style="position:fixed; top:0px; font-size:0.8rem;z-index:999;width:100%; height:auto; color:#FFFFFF;" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()">
+                温馨提示：最新公告
+                <a style="color: #FFFFFF" href="#"><{$rs_announcement[0]['annTitle']}></a>
+            </marquee>
+
+
+            <div class="swiper-wrapper">
+                <foreach name="rs_focusmap" item="adv" key="k">
+                    <div class="swiper-slide">
+                        <a href="#" onclick="">
+                            <img src="__ROOT__/<{$adv.zfImages}>" style="width:100%;height:auto;"
+                                 width="173px" height="80px" alt="焦点图2">
+                        </a>
+                    </div>
+                </foreach>
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+
+        </div>
+
+<style>
+    .uc_img {
+        width: 3.52rem;
+        height: 3.52rem;
+        overflow: hidden;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid lightgrey;
+        margin: 0 auto;
+    }
+    .img-circle {
+        border-radius: 50%;
+    }
+    img {
+        vertical-align: middle;
+    }
+    img {
+        border: 0;
+    }
+
+    .table_cell{
+        color:#848484;
+    }
+
+
+
+</style>
+<div class="uc_center" >
+    <div class="uc_c_top" style="padding:0px; background-color: #f7f7f7;">
+
+
+        <div class=" uc_c_top_conten  " >
+            <div class="table_block " style="background-image: url(../../Uploads/mi/r95148.png);">
+
+                <!--个人头像 lishibo-->
+                <div class="table_cell " style="margin:0px;padding:0px;">
+                       <div class="uc_img_bor_small" style=" border: 0px;padding:0.18rem 0;margin-left:-1.2rem;">
+
+                                <if condition="$rs_users.uImages eq null">
+                                    <if condition="$rs_users.uSex eq 1">
+                                        <span><img alt="image" class="img-circle" src="__PUBLIC__/Default/img/defaultu_1.jpg" width="80" height="80" /></span>
+                                        <else/>
+                                        <span><img alt="image" class="img-circle" src="__PUBLIC__/Default/img/defaultu_2.jpg" width="80" height="80" /></span>
+                                    </if>
+                                    <else/>
+                                    <span><img alt="image" class="img-circle" src="__ROOT__/<{$rs_users.uImages}>" width="80" height="80" /></span>
+                                </if>
+
+
+                        </div>
+                </div>
+
+                <!--昵称-->
+                <a class="table_cell " style="text-align: left;width:2%;">
+                  <div   style="float:left;">
+                      <p class="icon_block" style="color:#000000;">ID:<{$rs_users.uUser}></p>
+                      <p class="icon_block " style="color:#000000;">欢迎您：<{$rs_users.uName}></p>
+                      <p class="icon_block " style="color:#000000;">当前在线人数：<{$online}></p>
+                  </div>
+              </a>
+
+                <script>
+                    function user_sign_wap(id) {
+                        var ajaxurl = "__URL__/UserSign/uId/"+id;
+                        $.showIndicator();
+                        $.ajax({
+                            url: ajaxurl,
+                            type: "Post",
+                            dataType: "json",
+                            success: function (data) {
+                                $.hideIndicator();
+                                if (data.status == 1) {
+                                    $.alert(data.info, function () {
+                                        window.location.href="/wap/Index/";
+                                    });
+                                }
+                                else {
+                                    $.alert(data.info);
+                                }
+                            }, error: function () {
+                                $.toast("通信失败");
+                                $.hideIndicator();
+                            }
+                        });
+
+                    }
+
+                    function fuck(){
+                        alert("fucjk");
+                    }
+
+                </script>
+
+                <!--签到-->
+                <if condition="$countlog eq 0">
+                    <a class="table_cell " style="text-align: center;" onclick="user_sign_wap(1);" >
+
+                        <div class="f_l show">
+                            <p class="icon_block "><i class="icon" style="background-image: url(../../Uploads/mi/xingyunfudai2.svg);height: 53px;width: 55px;"></i></p>
+                            <p class="text ff9785">幸运福袋</p>
+                        </div>
+                    </a>
+                    <else/>
+                    <a class="table_cell " style="text-align: center;" onclick="user_sign_wap(1);" >
+
+                        <div class="f_l show">
+                            <p class="icon_block "><i class="icon" style="background-image: url(../../Uploads/mi/xingyunfudai2.svg);height: 53px;width: 55px;"></i></p>
+                            <p class="text ff9785">幸运福袋</p>
+                        </div>
+                    </a>
+                </if>
+
+            </div>
+        </div>
+
+        <div class="blank039"></div>
+        <include file="Public/nav" />
+
+    </div>
+
+
+
+
+
+
+    <div class="uc_c_middle">
+
+
+
+
+
+        <!---->
+        <style>
+            .row{
+                line-height: 1.2rem;
+                color: #858585;
+                font-size: 0.6rem;
+                text-align: center;
+            }
+
+            row .col-50 {
+                width: 46%;
+                margin-left: 4%;
+                text-align: center;
+            }
+
+            .data {
+               padding-top:0.7rem;
+            }
+            .row i {
+                position: relative;
+                top: 3px;
+            }
+
+            .cashicon {
+                background: url(/Public/Default/wap/images/s2.png) no-repeat;
+                background-size: 100% 100%;
+                display: inline-block;
+                line-height: 2.5rem;
+                width: 18px;
+                height: 18px;
+            }
+
+            .totalicon {
+                background: url(/Public/Default/wap/images/s1.png) no-repeat;
+                background-size: 100% 100%;
+                display: inline-block;
+                width: 18px;
+                height: 18px;
+            }
+
+            .dongjieicon {
+                background: url(/Public/Default/wap/images/s3.png) no-repeat;
+                background-size: 100% 100%;
+                display: inline-block;
+                width: 18px;
+                height: 18px;
+            }
+
+            .numcolor {
+                color: #ddbf52;
+                font-size: 18px;
+            }
+
+
+        </style>
+        <div class="content-padded grid" style="background-color: white;margin:0;padding:0;display:block;">
+            <div class="row data" >
+                <div class="col-50 numcolor"><{$rs_shouru.xingji}></div>
+                <div class="col-50 numcolor"><{$zonglixi}></div>
+            </div>
+            <div class="row">
+                <div class="col-50"><i class="dongjieicon"></i>&nbsp;星级： </div>
+                <div class="col-50"><i class="cashicon"></i>&nbsp;利息余额： </div>
+            </div>
+            <div class="row data">
+                <div class="col-50 numcolor"><{$rs_shouru.paiDanBi}></div>
+                <div class="col-50 numcolor"><{$rs_shouru.dongtaiqianbao}></div>
+            </div>
+            <div class="row">
+                <div class="col-50"><i class="cashicon"></i>&nbsp;手续费： </div>
+                <div class="col-50"><i class="cashicon"></i>&nbsp;动态钱包： </div>
+            </div>
+            <div class="row data">
+                <div class="col-50 numcolor"><{$rs_shouru.jiHuoMa}></div>
+                <div class="col-50 numcolor"><{$rs_shouru.tongbuqianbao}></div>
+            </div>
+            <div class="row" style="  padding-bottom:0.7rem;">
+                <div class="col-50"><i class="dongjieicon"></i>&nbsp;激活码： </div>
+                <div class="col-50"><i class="totalicon"></i>&nbsp;同步钱包： </div>
+            </div>
+
+        </div>
+
+        <div class="blank039"></div>
+        <style>
+            .icobox  img {
+                margin-top:-0.2rem;
+                width: 1rem;
+                height: 1rem;
+                border: none;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .w_b_f_1 {
+              //  text-indent: 0.5rem;
+                color: #848484;
+                font-size:1rem;
+            }
+            .uc_c_middle_content_list li{
+                vertical-align: middle;
+                line-height: 2rem;
+            }
+        </style>
+
+        <ul class="uc_c_middle_content_list">
+            <li>
+                <a href="#" class="href_first w_b" onclick="RouterURL('wap/RegCode/ApplicatpaidanbiCode/uId/<{$uId}>','',1);">
+                    <span class="th">
+                        <i class="ico icobox">
+                            <img src="/Public/Default/wap/images/xiaoxi.png" width="100%">
+                        </i>
+                    </span>
+                    <p class="w_b_f_1">手续费转账</p>
+                    <i class="icon iconfont icon_rigth"></i>
+                </a>
+
+            </li>
+            <li>
+                <a href="#" class="href_first w_b" onclick="RouterURL('RegCode/applicationregcode/uId/<{$uId}>','',1);">
+                    <span class="th">
+                        <i class="ico icobox">
+                            <img src="/Public/Default/wap/images/xiaoxi.png" width="100%">
+                        </i>
+                    </span>
+                    <p class="w_b_f_1">激活码转账</p>
+                    <i class="icon iconfont icon_rigth"></i>
+                </a>
+            </li>
+          <li>
+                <a href="#" class="href_first w_b" onclick="RouterURL('Books/add','',1);">
+                   <span class="th">
+                        <i class="ico icobox">
+                            <img src="/Public/Default/wap/images/liuyan.png" width="100%">
+                        </i>
+                    </span>
+                    <p class="w_b_f_1">在线留言</p>
+                    <i class="icon iconfont icon_rigth"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="href_first w_b" onclick="RouterURL('LoginTrue/ExitLogin','',1);">
+                   <span class="th">
+                        <i class="ico icobox">
+                            <img src="/Public/Default/wap/images/tuichu.png" width="100%">
+                        </i>
+                    </span>
+                    <p class="w_b_f_1">退出登录</p>
+                    <i class="icon iconfont icon_rigth"></i>
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+
+</div>
+
+  <!--浮动客服-->
+        <div class="scrollsidebar" id="scrollsidebar">
+            <div class="show_btn" id="show_btn"><span>客服微信</span></div>
+            <div class="side_content" id="side_content">
+                <div class="side_list">
+                    <div class="side_title"><a title="隐藏" class="close_btn" ><span>关闭</span></a></div>
+                    <div class="side_center">
+                        <div class="custom_service">
+                            <p> <a title="点击这里给我发消息" href="#" target="_blank">客服微信二维码</a> </p>
+                        </div>
+                        <div class="other">
+                            <p><img src="__ROOT__/<{$rs_systemName.sErweima}>" width="120"/></p>
+                            <p>客服微信号</p>
+                            <p><{$rs_systemName.sWeixin}></p>
+                        </div>
+                        <div class="msgserver">
+                            <p><a href="###" >联系我们</a></p>
+                        </div>
+                    </div>
+                    <div class="side_bottom"></div>
+                </div>
+            </div>
+
+        </div>
+       
+
+        <script type="text/javascript" src="__PUBLIC__/Default/wap/qiuqiuqiu/kefu/js/qq.js"></script>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Default/wap/qiuqiuqiu/kefu/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Default/wap/qiuqiuqiu/kefu/css/htmleaf-demo.css">
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Default/wap/qiuqiuqiu/kefu/css/style.css">      
+
+        <include file="Public/footer"/>
+
+

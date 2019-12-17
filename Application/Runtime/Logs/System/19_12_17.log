@@ -1,0 +1,594 @@
+[ 2019-12-17T08:58:24+08:00 ] 127.0.0.1 /system/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000891s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000923s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001054s ]
+SQL: SHOW COLUMNS FROM `lscf_system_log` [ RunTime:0.0454s ]
+SQL: INSERT INTO `lscf_system_log` (`slogTimes`,`slogIp`,`slogCity`,`slogAction`) VALUES ('2019-12-17 08:58:22','127.0.0.1','内网本机IP','0') [ RunTime:0.0070s ]
+SQL: SELECT `sName`,`sCopyrightName`,`sCheckCodeSwitch` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000086s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000233s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015549s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015743s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001126s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001258s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001337s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001459s ]
+
+[ 2019-12-17T08:58:24+08:00 ] 127.0.0.1 /system/favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000095s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001308s ]
+
+[ 2019-12-17T08:58:36+08:00 ] 127.0.0.1 /System/Login/CheckLogin/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000698s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001135s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001445s ]
+SQL: SELECT `sCheckCodeSwitch`,`sErrorPwdLockNum`,`sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `lscf_admin` [ RunTime:0.0392s ]
+SQL: SELECT * FROM `lscf_admin` WHERE ( aUser='system' OR aTel='system' ) LIMIT 1   [ RunTime:0.0013s ]
+SQL: UPDATE `lscf_admin` SET `aLoginNum`='551',`aErrorPwdNum`='0' WHERE ( aUser='system' OR aTel='system' ) [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: aDid E:\PhpStorm\boshang-pack_20191123_68wLlY\wwwroot\Application\System\Controller\LoginController.class.php 第 92 行.
+SQL: INSERT INTO `lscf_system_log` (`slogUsers`,`slogTimes`,`slogIp`,`slogCity`,`slogAction`) VALUES ('system','2019-12-17 08:58:36','127.0.0.1','内网本机IP','1') [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000087s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000253s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014698s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014923s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001350s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001498s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001380s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001535s ]
+
+[ 2019-12-17T08:58:39+08:00 ] 127.0.0.1 /system/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001208s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000842s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000976s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0010s ]
+SQL: UPDATE `lscf_users` SET `uOnline`='0' WHERE ( uId=16 ) [ RunTime:0.0009s ]
+SQL: SELECT `sVersions`,`sName`,`sUrl`,`sCopyrightName`,`sXuanchanMenu` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `lscf_admin` WHERE ( aId=1 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT SUM(uOnline) AS tp_sum FROM `lscf_users` LIMIT 1   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000156s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000293s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039285s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039473s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001040s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001156s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001305s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001431s ]
+
+[ 2019-12-17T08:58:41+08:00 ] 127.0.0.1 /system/index/welcome
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000897s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001229s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001365s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+SQL: SELECT SUM(uiUJiner) AS tp_sum FROM `lscf_users_invest` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(uuniJiner) AS tp_sum FROM `lscf_users_uninvest` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(uLixi) AS tp_sum FROM `lscf_users` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(uPDLixi) AS tp_sum FROM `lscf_users` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(mlJiner) AS tp_sum FROM `lscf_money_log` WHERE ( mlMoneyType=2 AND mlPorM=1 AND mlToday='2019-12-17' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(uJiangjin) AS tp_sum FROM `lscf_users` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT SUM(mrcPayPrice) AS tp_sum FROM `lscf_mregcodes` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `lscf_users_invest` WHERE ( uiState=0 AND uiShow=1 ) ORDER BY uiId desc LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `lscf_users_uninvest` WHERE ( uuniState=0 AND uuniShow=1 ) ORDER BY uuniId desc LIMIT 0,10   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `lscf_books` [ RunTime:0.0308s ]
+SQL: SELECT * FROM `lscf_books` ORDER BY bId desc  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000104s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000217s ]
+SQL: SELECT `uId`,`uUser` FROM `lscf_users` WHERE ( uId=1 ) LIMIT 1   [ RunTime:0.0015s ]
+SQL: SELECT `uId`,`uUser` FROM `lscf_users` WHERE ( uId=1 ) LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `uId`,`uUser` FROM `lscf_users` WHERE ( uId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022418s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022529s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001153s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001265s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001231s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001346s ]
+
+[ 2019-12-17T08:58:42+08:00 ] 127.0.0.1 /system/index/favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000742s ]
+
+[ 2019-12-17T08:58:47+08:00 ] 127.0.0.1 /system/Assistance/adduninvest
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000675s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001019s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001149s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000077s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000213s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009009s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009129s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000856s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000963s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001067s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001171s ]
+
+[ 2019-12-17T08:59:03+08:00 ] 127.0.0.1 /System/Assistance/AddunInvestAction
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000700s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000829s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000946s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lscf_users` WHERE ( uUser='ccc' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `upTypeInvestment`,`upTZMultiples`,`upMaxMoney` FROM `lscf_users_parameters` WHERE ( upId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: INSERT INTO `lscf_users_uninvest` (`uuniUid`,`uuniJiner`,`uuniDate`) VALUES ('16','1000','2019-12-17 08:59:03') [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: userdata E:\PhpStorm\boshang-pack_20191123_68wLlY\wwwroot\Application\System\Controller\AssistanceController.class.php 第 631 行.
+SQL: UPDATE `lscf_users` SET `uId`='16',`uUser`='ccc',`uName`='收款账号',`uTel`='15265557777',`uWeixin`='15265557777',`yinhangName`='',`yinhangNubmer`='',`uZhifubao`='15265557777',`uSex`='1',`uEmail`='',`uPwd`='e10adc3949ba59abbe56e057f20f883e',`uZfPwd`='c33367701511b4f6020ec61ded352059',`uSfId`='371502200103213111',`uTuiId`='1',`uSonUser`=NULL,`uVip`='0',`shangchengjifen`='3000',`tongbuqianbao`='0',`dongtaiqianbao`='0',`uBenjin`='0',`uLixi`='0',`uNowLixi`='0',`uPDLixi`='0',`uPDLixiMax`='0',`uJiangjin`='0',`uState`='1',`uTouziState`='1',`uTouziNum`='4',`uLock`='1',`uImages`=NULL,`uLoginNum`='33',`uErrorPwdNum`='0',`uZFErrorPwdNum`='0',`uRegDate`='2019-09-21 16:30:11',`uOnline`='0',`uOnlineDate`='2019-12-02 16:44:34',`uQiandaoNum`='0',`uMXInvisible`='1',`uMXInvisibleValid`='0',`paiDanBi`='990',`xingji`='9',`jiHuoMa`='0',`dakuanbiaozhi`='7',`yxqgxtime`='1575267314',`sjqgxtime`='1575269640',`xiacikaishi`='5',`suixiackaishi`='5',`tid`='0' WHERE ( uId=16 ) [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001878s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.001993s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000895s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001096s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001200s ]
+
+[ 2019-12-17T08:59:09+08:00 ] 127.0.0.1 /System/Assistance/wantuninvestlists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000718s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000851s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000976s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `lscf_users_uninvest` WHERE ( uuniState=0 AND uuniShow=1 )  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000103s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000269s ]
+SQL: SELECT `uUser`,`uName`,`uZhifubao`,`uTel` FROM `lscf_users` WHERE ( uId=16 ) LIMIT 1   [ RunTime:0.0004s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032580s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032786s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001194s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001332s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001472s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001612s ]
+
+[ 2019-12-17T09:03:50+08:00 ] 127.0.0.1 /System/Assistance/wantuninvestlists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000820s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001086s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001225s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0008s ]
+SQL: SELECT * FROM `lscf_users_uninvest` WHERE ( uuniState=0 AND uuniShow=1 )  [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007480s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007872s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002536s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002843s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002378s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002604s ]
+
+[ 2019-12-17T09:13:10+08:00 ] 127.0.0.1 /system/Assistance/adduninvest
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000687s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000813s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000955s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0009s ]
+SQL: UPDATE `lscf_users` SET `uOnline`='0' WHERE ( uId=14 ) [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002111s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002229s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000902s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001012s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001133s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001243s ]
+
+[ 2019-12-17T09:13:19+08:00 ] 127.0.0.1 /System/Assistance/AddunInvestAction
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000770s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000868s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001003s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lscf_users` WHERE ( uUser='ccc' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `upTypeInvestment`,`upTZMultiples`,`upMaxMoney` FROM `lscf_users_parameters` WHERE ( upId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `lscf_users_uninvest` (`uuniUid`,`uuniJiner`,`uuniDate`) VALUES ('16','1000','2019-12-17 09:13:19') [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: userdata E:\PhpStorm\boshang-pack_20191123_68wLlY\wwwroot\Application\System\Controller\AssistanceController.class.php 第 631 行.
+SQL: UPDATE `lscf_users` SET `uId`='16',`uUser`='ccc',`uName`='收款账号',`uTel`='15265557777',`uWeixin`='15265557777',`yinhangName`='',`yinhangNubmer`='',`uZhifubao`='15265557777',`uSex`='1',`uEmail`='',`uPwd`='e10adc3949ba59abbe56e057f20f883e',`uZfPwd`='c33367701511b4f6020ec61ded352059',`uSfId`='371502200103213111',`uTuiId`='1',`uSonUser`=NULL,`uVip`='0',`shangchengjifen`='3000',`tongbuqianbao`='0',`dongtaiqianbao`='0',`uBenjin`='0',`uLixi`='0',`uNowLixi`='0',`uPDLixi`='0',`uPDLixiMax`='0',`uJiangjin`='0',`uState`='1',`uTouziState`='1',`uTouziNum`='4',`uLock`='1',`uImages`=NULL,`uLoginNum`='23',`uErrorPwdNum`='0',`uZFErrorPwdNum`='0',`uRegDate`='2019-09-21 16:30:11',`uOnline`='1',`uOnlineDate`='2019-12-17 09:12:05',`uQiandaoNum`='0',`uMXInvisible`='1',`uMXInvisibleValid`='0',`paiDanBi`='1000',`xingji`='9',`jiHuoMa`='0',`dakuanbiaozhi`='2',`yxqgxtime`='1576545121',`sjqgxtime`='1576545125',`xiacikaishi`='5',`suixiackaishi`='5',`tid`='0' WHERE ( uId=16 ) [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002239s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002411s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001082s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001240s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001327s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001454s ]
+
+[ 2019-12-17T09:13:25+08:00 ] 127.0.0.1 /System/Assistance/wantuninvestlists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000696s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000819s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000956s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `lscf_users_uninvest` WHERE ( uuniState=0 AND uuniShow=1 )  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+SQL: SELECT `uUser`,`uName`,`uZhifubao`,`uTel` FROM `lscf_users` WHERE ( uId=16 ) LIMIT 1   [ RunTime:0.0007s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009591s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009964s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002528s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002793s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002403s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002633s ]
+
+[ 2019-12-17T09:17:38+08:00 ] 127.0.0.1 /system/Assistance/adduninvest
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000045s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000859s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001262s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001524s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002696s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002849s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001142s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001272s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001295s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001423s ]
+
+[ 2019-12-17T09:17:46+08:00 ] 127.0.0.1 /System/Assistance/AddunInvestAction
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000700s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000799s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000919s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lscf_users` WHERE ( uUser='ccc' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `upTypeInvestment`,`upTZMultiples`,`upMaxMoney` FROM `lscf_users_parameters` WHERE ( upId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: INSERT INTO `lscf_users_uninvest` (`uuniUid`,`uuniJiner`,`uuniDate`) VALUES ('16','1000','2019-12-17 09:17:46') [ RunTime:0.0003s ]
+NOTIC: [8] Undefined variable: userdata E:\PhpStorm\boshang-pack_20191123_68wLlY\wwwroot\Application\System\Controller\AssistanceController.class.php 第 631 行.
+SQL: UPDATE `lscf_users` SET `uId`='16',`uUser`='ccc',`uName`='收款账号',`uTel`='15265557777',`uWeixin`='15265557777',`yinhangName`='',`yinhangNubmer`='',`uZhifubao`='15265557777',`uSex`='1',`uEmail`='',`uPwd`='e10adc3949ba59abbe56e057f20f883e',`uZfPwd`='c33367701511b4f6020ec61ded352059',`uSfId`='371502200103213111',`uTuiId`='1',`uSonUser`=NULL,`uVip`='0',`shangchengjifen`='3000',`tongbuqianbao`='0',`dongtaiqianbao`='0',`uBenjin`='0',`uLixi`='0',`uNowLixi`='0',`uPDLixi`='0',`uPDLixiMax`='0',`uJiangjin`='0',`uState`='1',`uTouziState`='1',`uTouziNum`='4',`uLock`='1',`uImages`=NULL,`uLoginNum`='23',`uErrorPwdNum`='0',`uZFErrorPwdNum`='0',`uRegDate`='2019-09-21 16:30:11',`uOnline`='1',`uOnlineDate`='2019-12-17 09:16:59',`uQiandaoNum`='0',`uMXInvisible`='1',`uMXInvisibleValid`='0',`paiDanBi`='997',`xingji`='9',`jiHuoMa`='0',`dakuanbiaozhi`='2',`yxqgxtime`='1576545121',`sjqgxtime`='1576545258',`xiacikaishi`='5',`suixiackaishi`='5',`tid`='0' WHERE ( uId=16 ) [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001740s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.001857s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000883s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000991s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001071s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001181s ]
+
+[ 2019-12-17T09:17:52+08:00 ] 127.0.0.1 /System/Assistance/wantuninvestlists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000682s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000831s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000956s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `lscf_users_uninvest` WHERE ( uuniState=0 AND uuniShow=1 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+SQL: SELECT `uUser`,`uName`,`uZhifubao`,`uTel` FROM `lscf_users` WHERE ( uId=16 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002778s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002888s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000911s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001017s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001081s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001196s ]
+
+[ 2019-12-17T09:22:38+08:00 ] 127.0.0.1 /system/Assistance/adduninvest
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000684s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001149s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001290s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002010s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002126s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000900s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001105s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001211s ]
+
+[ 2019-12-17T09:22:49+08:00 ] 127.0.0.1 /System/Assistance/AddunInvestAction
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000627s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000811s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000924s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lscf_users` WHERE ( uUser='ccc' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `upTypeInvestment`,`upTZMultiples`,`upMaxMoney` FROM `lscf_users_parameters` WHERE ( upId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `lscf_users_uninvest` (`uuniUid`,`uuniJiner`,`uuniDate`) VALUES ('16','1000','2019-12-17 09:22:49') [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: userdata E:\PhpStorm\boshang-pack_20191123_68wLlY\wwwroot\Application\System\Controller\AssistanceController.class.php 第 631 行.
+SQL: UPDATE `lscf_users` SET `uId`='16',`uUser`='ccc',`uName`='收款账号',`uTel`='15265557777',`uWeixin`='15265557777',`yinhangName`='',`yinhangNubmer`='',`uZhifubao`='15265557777',`uSex`='1',`uEmail`='',`uPwd`='e10adc3949ba59abbe56e057f20f883e',`uZfPwd`='c33367701511b4f6020ec61ded352059',`uSfId`='371502200103213111',`uTuiId`='1',`uSonUser`=NULL,`uVip`='0',`shangchengjifen`='3000',`tongbuqianbao`='0',`dongtaiqianbao`='0',`uBenjin`='0',`uLixi`='0',`uNowLixi`='0',`uPDLixi`='0',`uPDLixiMax`='0',`uJiangjin`='0',`uState`='1',`uTouziState`='1',`uTouziNum`='4',`uLock`='1',`uImages`=NULL,`uLoginNum`='23',`uErrorPwdNum`='0',`uZFErrorPwdNum`='0',`uRegDate`='2019-09-21 16:30:11',`uOnline`='1',`uOnlineDate`='2019-12-17 09:18:56',`uQiandaoNum`='0',`uMXInvisible`='1',`uMXInvisibleValid`='0',`paiDanBi`='997',`xingji`='9',`jiHuoMa`='0',`dakuanbiaozhi`='2',`yxqgxtime`='1576545121',`sjqgxtime`='1576545495',`xiacikaishi`='5',`suixiackaishi`='5',`tid`='0' WHERE ( uId=16 ) [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001803s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.001921s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000883s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000994s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001050s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001155s ]
+
+[ 2019-12-17T09:22:54+08:00 ] 127.0.0.1 /System/Assistance/wantuninvestlists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000667s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000813s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000936s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `lscf_users_uninvest` WHERE ( uuniState=0 AND uuniShow=1 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+SQL: SELECT `uUser`,`uName`,`uZhifubao`,`uTel` FROM `lscf_users` WHERE ( uId=16 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002667s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002774s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000836s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000939s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001025s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001131s ]
+
+[ 2019-12-17T09:32:26+08:00 ] 127.0.0.1 /system/Assistance/adduninvest
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000777s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000855s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001057s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002221s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002411s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000911s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001091s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001188s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001376s ]
+
+[ 2019-12-17T09:32:30+08:00 ] 127.0.0.1 /system/Assistance/adduninvest
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000105s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001483s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002660s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002928s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002218s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002426s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000958s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001153s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001024s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001212s ]
+
+[ 2019-12-17T09:32:32+08:00 ] 127.0.0.1 /system/Assistance/adduninvest
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000859s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001069s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001269s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002065s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002251s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000936s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001123s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001163s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001348s ]
+
+[ 2019-12-17T09:32:34+08:00 ] 127.0.0.1 /system/Assistance/addinvest
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000701s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000854s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001069s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+SQL: SELECT `upTypeInvestment`,`upTZMultiples`,`upMaxMoney`,`upReact` FROM `lscf_users_parameters` WHERE ( upId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lscf_users_touzidata`  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000104s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000287s ]
+NOTIC: [8] Undefined variable: rs_users E:\PhpStorm\boshang-pack_20191123_68wLlY\wwwroot\Application\Runtime\Cache\System\6f4a04f07b87afb1d38bf47d43cc2bad.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011878s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012065s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000807s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000982s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000852s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001030s ]
+
+[ 2019-12-17T09:32:36+08:00 ] 127.0.0.1 /system/Assistance/adduninvest
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000060s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000778s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000890s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001097s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0002s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002081s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002272s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000860s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001043s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001111s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001296s ]
+
+[ 2019-12-17T09:32:46+08:00 ] 127.0.0.1 /System/Assistance/AddunInvestAction
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000728s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000837s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001033s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lscf_users` WHERE ( uUser='ccc' ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `upTypeInvestment`,`upTZMultiples`,`upMaxMoney` FROM `lscf_users_parameters` WHERE ( upId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: INSERT INTO `lscf_users_uninvest` (`uuniUid`,`uuniJiner`,`uuniDate`) VALUES ('16','1000','2019-12-17 09:32:46') [ RunTime:0.0002s ]
+NOTIC: [8] Undefined variable: userdata E:\PhpStorm\boshang-pack_20191123_68wLlY\wwwroot\Application\System\Controller\AssistanceController.class.php 第 631 行.
+SQL: UPDATE `lscf_users` SET `uId`='16',`uUser`='ccc',`uName`='收款账号',`uTel`='15265557777',`uWeixin`='15265557777',`yinhangName`='',`yinhangNubmer`='',`uZhifubao`='15265557777',`uSex`='1',`uEmail`='',`uPwd`='e10adc3949ba59abbe56e057f20f883e',`uZfPwd`='c33367701511b4f6020ec61ded352059',`uSfId`='371502200103213111',`uTuiId`='1',`uSonUser`=NULL,`uVip`='0',`shangchengjifen`='3000',`tongbuqianbao`='0',`dongtaiqianbao`='0',`uBenjin`='0',`uLixi`='0',`uNowLixi`='0',`uPDLixi`='0',`uPDLixiMax`='0',`uJiangjin`='0',`uState`='1',`uTouziState`='1',`uTouziNum`='4',`uLock`='1',`uImages`=NULL,`uLoginNum`='23',`uErrorPwdNum`='0',`uZFErrorPwdNum`='0',`uRegDate`='2019-09-21 16:30:11',`uOnline`='1',`uOnlineDate`='2019-12-17 09:23:07',`uQiandaoNum`='0',`uMXInvisible`='1',`uMXInvisibleValid`='0',`paiDanBi`='997',`xingji`='9',`jiHuoMa`='0',`dakuanbiaozhi`='2',`yxqgxtime`='1576545121',`sjqgxtime`='1576545787',`xiacikaishi`='5',`suixiackaishi`='5',`tid`='0' WHERE ( uId=16 ) [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002014s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002223s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000902s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001095s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000848s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001027s ]
+
+[ 2019-12-17T09:32:52+08:00 ] 127.0.0.1 /System/Assistance/wantuninvestlists.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000726s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000863s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001067s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `sLoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `sULoginTimeout` FROM `lscf_system` WHERE ( sId=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT `uId`,`uOnline`,`uOnlineDate` FROM `lscf_users` WHERE ( uOnline=1 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `lscf_users_uninvest` WHERE ( uuniState=0 AND uuniShow=1 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+SQL: SELECT `uUser`,`uName`,`uZhifubao`,`uTel` FROM `lscf_users` WHERE ( uId=16 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.002980s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003170s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000928s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001159s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000909s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001095s ]
+

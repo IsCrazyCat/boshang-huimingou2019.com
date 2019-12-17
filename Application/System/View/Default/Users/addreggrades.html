@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加会员等级</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>添加会员等级 <small><a href="__URL__/reggradeslists">会员等级列表</a></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="post" action="__URL__/AddRegGradesAction" class="form-horizontal" id="form-admin-add" >
+                            
+                            
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">等级名称</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="rgName" id="rgName" placeholder="控制在10个汉字内" class="form-control">
+                                    </div>
+                            	 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">本级别所需推广总人数</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="rgTJPeople" id="rgTJPeople" placeholder="请输入本级别需要的人数" class="form-control">
+                                    </div>
+                                 </div>
+                                                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">升级下一级还需推广人数</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="rgSJNextPeople" id="rgSJNextPeople" placeholder="请输入升级下一级别需要的人数" class="form-control">
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">每日附加利率</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="rgLixi" id="rgLixi" placeholder="请输入整数或小数或百分数" class="form-control">
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">推荐奖金</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="rgTJJangjin" id="rgTJJangjin" placeholder="请输入整数或小数或百分数" class="form-control">
+                                    </div>
+                                 </div>
+
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">升级奖金</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="rgShengjiJiangjin" id="rgShengjiJiangjin" placeholder="请输入整数或小数或百分数" class="form-control">
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                <label class="col-sm-2 control-label">提现税费</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="rgShuifei" id="rgShuifei" placeholder="请输入整数或小数或百分数" class="form-control">
+                                    </div>
+                                 </div>
+                            
+                                
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                <!--
+                                    <button class="btn btn-primary" type="submit">添加等级</button>
+                                -->
+                                	<input class="btn btn-primary" type="submit" value="添加等级">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/iCheck/icheck.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/jquery.validate.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/messages_zh.min.js"></script> 
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Default/check/js/validate-methods.js"></script> 
+
+
+
+   
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    
+    <script type="text/javascript">
+	$(function(){
+	$("#form-admin-add").validate({
+		rules:{
+			rgName:{
+				required:true,
+			},
+			rgPeople:{
+				required:true,
+
+			},
+            rgSJNextPeople:{
+                required:true,
+
+            },
+			rgLixi:{
+				required:true,
+
+			},
+            rgTJJangjin:{
+                required:true,
+
+            },
+            rgShengjiJiangjin:{
+                required:true,
+
+            },
+            rgShuifei:{
+                required:true,
+
+            },
+		},
+		onkeyup:false,
+		focusCleanup:true,
+		success:"valid",
+		submitHandler:function(form){
+			$(form).ajaxSubmit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script> 
+    
+    
+</body>
+
+</html>

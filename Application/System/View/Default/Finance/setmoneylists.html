@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>请选择操作的类型</title>
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <!-- Morris -->
+    <link href="__PUBLIC__/Default/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="__PUBLIC__/Default/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+
+
+        <div class="row">
+
+        <div class="col-sm-12">
+                <div>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                <form method="post" action="__URL__/CalculationOfTheInterestOfTheArtificialExecutiveProgram"  class="form-horizontal" >
+                                    <input type="hidden" name="spwd" value="<{$spwd}>"></input>
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%; height: 80PX; background-color: #d87570; color: #ffffff"><strong style="font-size: 16px;">发放今日援助利息</strong></button>
+                                </form>
+                                    
+                                </td>
+                                <td>
+                                <form method="post" action="__URL__/ManualDeductionOfTodayInterestCalculationOperation"  class="form-horizontal">
+                                    <input type="hidden" name="spwd1" value="<{$spwd}>"></input>
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%;  height: 80PX; background-color: #f9ad59; color: #ffffff"><strong style="font-size: 16px;">扣除今日援助利息</strong></button>
+                                </form>
+                                </td>
+                                
+                            </tr>
+
+                            <tr>
+                                <td>
+                                <form method="post" action="__URL__/PaiDanCalculationOfTheInterestOfTheArtificialExecutiveProgram"  class="form-horizontal" >
+                                    <input type="hidden" name="spwd" value="<{$spwd}>"></input>
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%; height: 80PX; background-color: #03c8bc; color: #ffffff"><strong style="font-size: 16px;">发放今日排单利息</strong></button>
+                                </form>
+                                    
+                                </td>
+                                <td>
+                                <form method="post" action="__URL__/PaiDanManualDeductionOfTodayInterestCalculationOperation"  class="form-horizontal">
+                                    <input type="hidden" name="spwd1" value="<{$spwd}>"></input>
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%;  height: 80PX; background-color: #3886fa; color: #ffffff"><strong style="font-size: 16px;">扣除今日排单利息</strong></button>
+                                </form>
+                                </td>
+                                
+                            </tr>
+                            
+                            <tr>
+                            <td>
+                            <form method="post" action="__URL__/setuserslists"  class="form-horizontal">
+                                    <input type="hidden" name="spwd2" value="<{$spwd}>"></input>
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%; height: 70PX; background-color: #b33fde; color: #ffffff"><strong style="font-size: 16px; ">会员列表管理</strong></button>
+                            </form>
+                                    
+                                </td>
+                                <td>
+                                <form method="post" action="__URL__/setparameters"  class="form-horizontal">
+                                 
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%; height: 70PX; background-color: #eb6d90; color: #ffffff"><strong style="font-size: 16px;">会员参数设置</strong></button>
+                                </form>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                            <td>
+                            <form method="post" action="__APP__/Users/addreggrades"  class="form-horizontal">
+                                    <input type="hidden" name="spwd2" value="<{$spwd}>"></input>
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%; height: 60PX; background-color: #4c90f5; color: #ffffff"><strong style="font-size: 16px; ">添加会员等级</strong></button>
+                            </form>
+                                    
+                                </td>
+                                <td>
+                                <form method="post" action="__APP__/Users/reggradeslists"  class="form-horizontal">
+                                 
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%; height: 60PX; background-color: #0abf85; color: #ffffff"><strong style="font-size: 16px;">会员等级管理</strong></button>
+                                </form>
+                                </td>
+
+                            </tr>
+
+
+
+                             <tr>
+                             <td>
+                                <form method="post" action="__APP__/Users/userstouzidata"  class="form-horizontal">
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%; height: 60PX; background-color: #b8af1d; color: #ffffff"><strong style="font-size: 16px;">投资数据管理</strong></button>
+                                </form>
+                                </td>
+                            <td>
+                            <form method="post" action="__APP__/Bak/index"  class="form-horizontal">
+                                    <input type="hidden" name="spwd2" value="<{$spwd}>"></input>
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%; height: 60PX; background-color: #fb5cbd; color: #ffffff"><strong style="font-size: 16px; ">数据库管理</strong></button>
+                            </form>
+                                    
+                                </td>
+                            </tr>
+                            <php>
+                            $nowdate=date("YmdH");
+                            </php>
+
+                            <tr>
+                            <td>
+                            <form method="post" action="__APP__/System/DelLogAll/rands/<{$nowdate}>"  class="form-horizontal">
+                                    <input type="hidden" name="spwd2" value="<{$spwd}>"></input>
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%; height: 60PX; background-color: #ff6600; color: #ffffff"><strong style="font-size: 16px; ">删除登陆日志</strong></button>
+                            </form>
+                                    
+                                </td>
+
+                                <td>
+                             <form method="post" action="__URL__/noshowlists"  class="form-horizontal">
+                                    <input type="hidden" name="spwd2" value="<{$spwd}>"></input>
+                                    <button type="submit" class="btn btn m-r-sm" style="width: 100%; height: 60PX; background-color: #38a2e5; color: #ffffff"><strong style="font-size: 16px; ">隐身特别模块</strong></button>
+                            </form>
+                                    
+                                </td>
+                               
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/plugins/flot/jquery.flot.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/flot/jquery.flot.symbol.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="__PUBLIC__/Default/js/demo/peity-demo.min.js"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script src="__PUBLIC__/Default/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/easypiechart/jquery.easypiechart.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="__PUBLIC__/Default/js/demo/sparkline-demo.min.js"></script>
+    
+</body>
+
+</html>

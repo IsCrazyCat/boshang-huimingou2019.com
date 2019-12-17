@@ -1,0 +1,1 @@
+a:8:{i:0;s:6:"slogId";i:1;s:9:"slogTimes";i:2;s:9:"slogUsers";i:3;s:6:"slogIp";i:4;s:8:"slogCity";i:5;s:10:"slogAction";s:3:"_pk";s:6:"slogId";s:5:"_type";a:6:{s:6:"slogId";s:6:"int(9)";s:9:"slogTimes";s:8:"datetime";s:9:"slogUsers";s:11:"varchar(25)";s:6:"slogIp";s:11:"varchar(22)";s:8:"slogCity";s:11:"varchar(50)";s:10:"slogAction";s:11:"varchar(60)";}}

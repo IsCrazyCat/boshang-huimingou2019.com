@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>排单币审核列表</title>
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__PUBLIC__/Default/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <!-- Data Tables -->
+    <link href="__PUBLIC__/Default/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+    <link href="__PUBLIC__/Default/css/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Default/css/style.min.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>排单币审核列表 <small><a href="__URL__/givecode">发放排单币</a></small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>申请账户</th>
+                                    <th class="dropdown hidden-xs">申请时间</th>
+                                    <th class="dropdown hidden-xs">售价</th>
+                                    <th class="dropdown hidden-xs">购买个数</th>
+                                    <th class="dropdown hidden-xs">实付金额</th>
+                                    <th >审核状态</th>
+                                    <th class="dropdown hidden-xs">发放次数</th>
+                                    <th class="dropdown hidden-xs">虚假提交次数</th>
+                                    <th class="dropdown hidden-xs">支付截图</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="rs_apply" id="val_apply">
+                                <tr class="gradeX">
+                                    <td><{$val_apply.uarId}></td>
+                                    <php>
+                                    $uId=$val_apply["uarUid"];
+                                        $user=M("users");
+                                        $rs_user=$user->where("uId={$uId}")->field("uUser")->find();
+                                        $userInfo=$rs_user["uUser"];
+                                 </php>
+
+                                    <td><a href="__URL__/reviewcodeone/uarId/<{$val_apply.uarId}>"><{$userInfo}></a></td>
+
+                                    <td  class="dropdown hidden-xs"><{$val_apply.uarDate}></td>
+                                    <td  class="dropdown hidden-xs"><{$val_apply.uarPrice}></td>
+                                    <td  class="dropdown hidden-xs"><{$val_apply.uarCodeNum}></td>
+                                    <td  class="dropdown hidden-xs"><{$val_apply.uarPayPrice}></td>
+                                    <if condition="$val_apply.uarState eq 0">
+                                        <td><button type="button" class="btn btn-success btn-xs" style="margin-top: 5px;">还未审核</button></td>
+                                    <elseif condition="$val_apply.uarState eq 1"/>
+                                        <td><button type="button" class="btn btn-primary btn-xs" style="margin-top: 5px;">已经发放</button></td>
+
+                                    <elseif condition="$val_apply.uarState eq 2"/>
+                                        <td><button type="button" class="btn btn-danger btn-outline btn-xs" style="margin-top: 5px;">虚假提交</button></td>
+
+                                    <elseif condition="$val_apply.uarState eq 3"/>
+                                        <td><button type="button" class="btn btn-warning btn-xs" style="margin-top: 5px;">冻结账户</button></td>
+
+                                    <elseif condition="$val_apply.uarState eq 4"/>
+                                        <td><button type="button" class="btn btn-danger btn-xs" style="margin-top: 5px;">已被封号</button></td>
+                                    </if>
+
+                                     <td  class="dropdown hidden-xs"><{$val_apply.uarCodeNumState}></td>
+                                    <td  class="dropdown hidden-xs"><{$val_apply.uarErrorNum}></td>
+
+                                    <if condition="$val_apply.uarFiles eq null">
+                                    <td  class="dropdown hidden-xs"><img src="__PUBLIC__/Default/img/defaultzhifu.jpg" width="80px;" height="80px;"></td>
+                                    <else/>
+                                    <td  class="dropdown hidden-xs"><a href="__URL__/reviewcodeone/uarId/<{$val_apply.uarId}>"><img src="__ROOT__/<{$val_apply.uarFiles}>" width="80px;" height="80px;"></td></a>
+                                    </if>
+                                    <php>
+                                        $fafangnum=$val_apply["uarCodeNumState"];
+                                        $paynum=$val_apply["uarCodeNum"];
+                                        if($fafangnum<$paynum){
+                                            $fafangsta=0;
+                                        }else{
+                                            $fafangsta=1;
+                                        }
+                                    </php>
+                                    <if condition="$val_apply.uarState neq 1">
+                                        <td><a href="__URL__/paidanbifasong/uarId/<{$val_apply.uarId}>">发放</a></td>
+                                    <else/>
+                                        <td style="color: #ff0000">操作完成</td>
+                                    </if>
+                                </tr>
+                                
+                            </volist>    
+                            </tbody>
+                            
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="__PUBLIC__/Default/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Default/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Default/js/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="__PUBLIC__/Default/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="__PUBLIC__/Default/js/content.min.js?v=1.0.0"></script>
+    <script>
+        $(document).ready(function(){$(".dataTables-example").dataTable();var oTable=$("#editable").dataTable();oTable.$("td").editable("../example_ajax.php",{"callback":function(sValue,y){var aPos=oTable.fnGetPosition(this);oTable.fnUpdate(sValue,aPos[0],aPos[1])},"submitdata":function(value,settings){return{"row_id":this.parentNode.getAttribute("id"),"column":oTable.fnGetPosition(this)[2]}},"width":"90%","height":"100%"})});function fnClickAddRow(){$("#editable").dataTable().fnAddData(["Custom row","New row","New row","New row","New row"])};
+    </script>
+
+</body>
+
+</html>
